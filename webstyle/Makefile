@@ -5,7 +5,7 @@ include ../config.mk
 
 IMGFILES = *.png invenio_inspire.css
 JSFILES = *.js
-LIBFILES = web*_templates_inspire.py
+LIBFILES = *.py #web*_templates_inspire.py
 
 all:
 	@echo "Done."
