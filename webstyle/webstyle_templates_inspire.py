@@ -168,16 +168,31 @@ $(function() {
  <meta http-equiv="Content-Language" content="%(ln)s" />
  <meta name="description" content="%(description)s" />
  <meta name="keywords" content="%(keywords)s" />
- <script type="text/javascript" src="%(cssurl)s/js/jquery.min.js"></script>
+ <script type="text/javascript" src="https://liblinux13.slac.stanford.edu/js/jquery.min.js"></script>
  <script type="text/javascript">
- //<![CDATA[
- $(document).ready(function() {
-   if ((document.search) && ('baseURI' in document) && (document.baseURI.indexOf('/search?') == -1)) {
-       $('#mainlightsearchfield').focus();
-   }
- });
- //]]>
- </script>
+  //<![CDATA[
+   $(document).ready(function() {   
+           $("input").bind("keydown", function(event) {
+               // track enter key
+               var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+               if (keycode == 13) { // keycode for enter key
+                   $('#submit_button').click();
+                   return false;
+               } else{
+                    return true;
+               }
+           }); // end of function
+
+
+           if ((document.search) && ('baseURI' in document) && (document.baseURI.indexOf('/search?') == -1)) {
+                $('#mainlightsearchfield').focus();
+           }
+           if (document.baseURI.indexOf('easy-search') > -1) {
+              $('#author').focus(); 
+           }
+  });
+  //]]>
+</script>
  %(submissionjs)s
  %(metaheaderadd)s
 </head>

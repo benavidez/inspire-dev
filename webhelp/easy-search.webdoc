@@ -47,7 +47,25 @@
 </p>
 <blockquote>
 <dl>
+<script type="text/javascript" src="https://liblinux13.slac.stanford.edu/js/jquery.min.js"></script>
+ <script type="text/javascript">
+  //<![CDATA[
+   $(document).ready(function() {
+         $('#author').focus();
 
+         $("input").bind("keydown", function(event) {
+         // track enter key
+         var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+         if (keycode == 13) { // keycode for enter key
+            // force the 'Enter Key' to implicitly click the Update button
+            document.getElementById('submit_button').click();
+            return false;
+         else  {
+            return true;
+         }
+   });
+ //]]>
+</script>
 <script type="text/javascript">
     function perform_easy_search() {
         // get values
@@ -275,6 +293,6 @@ pg: <input size="8" id="jpage" /></td>
 </form>
 
 <div style="white-space: nowrap;" align="center">
-<input type="button" onclick="perform_easy_search()" value="Search" class="formbutton"/>
+<input type="button" id='submit_button' onclick="perform_easy_search()" value="Search" class="formbutton"/>
 </div>
 
