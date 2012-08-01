@@ -222,7 +222,7 @@ function openSrchWindow(winputid) {
         <tr><TD class=left><span class="form_label">Comments</span></TD><TD class=right><textarea name="usercomment" id=usercomment rows="4" cols="35" wrap="virtual"></textarea><span class="form_label_optional">(Optional)</span></TD></TR>
 </table>
 
-<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections > <b> HELP</b> with this form</a>&nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
+<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections > <b>HELP</b> with this form</a>&nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
 <br>
 
 <small> Click on <img src="/img/add.png" alt="+"> to insert new references below existing reference</small>

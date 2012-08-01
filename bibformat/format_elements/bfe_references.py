@@ -50,6 +50,7 @@ def format_element(bfo, reference_prefix, reference_suffix):
         clean_report = ''
         clean_journal = ''
         hits = []
+       # print '****' + reference
         if reference.has_key('o') and not reference['o'][0] == last_o:
             temp_ref = reference['o'][0].replace('.', '')
             if '[' in temp_ref and ']' in temp_ref:
@@ -97,12 +98,11 @@ def format_element(bfo, reference_prefix, reference_suffix):
                 ref_out.append("<small> <a href=\"http://dx.doi.org/" + \
                 reference['a'][0] + "\">" + reference['a'][0]+ "</a></small>")
             if reference.has_key('u'):
-                ref_out.append("<small> <a href=" + reference['u'][0] + ">" + \
-                reference['u'][0]+ "</a></small>")
+                ref_out.append("<small> <a href=" + reference['u'][0] + ">" + reference['u'][0] + "</a></small>")
             if reference.has_key('i'):
                 for r in reference['i']:
                     ref_out.append("<small> <a href=\"/search?ln=en&amp;p=020__a%3A"+r+"\">"+r+"</a></small>")
-
+            
             ref_out.append('<small>')
             if display_journal:
                 ref_out.append(display_journal)

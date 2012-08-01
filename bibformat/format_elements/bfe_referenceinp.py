@@ -46,10 +46,11 @@ def format_element(bfo, reference_prefix, reference_suffix):
 
         ordinal       = reference.get('o', '')
         clean_report  = reference.get('r', '')
-        clean_journal = reference.get('s', '')
+        clean_journal = reference.get('s', '') 
         clean_doi     = reference.get('a', '')
         h_key         = reference.get('h', '')
         m_key         = reference.get('m', '')
+        url           = reference.get('u', '')
         inputid = 'c' + str(tableid)
 
         format_line = reference_prefix
@@ -59,9 +60,11 @@ def format_element(bfo, reference_prefix, reference_suffix):
         recid = _get_unique_recid_for(clean_journal, clean_report, clean_doi)
         if recid:
             ref_out += '<td><small>' + format_record(recid, 'hs') + '</small></td>'
+        elif h_key or m_key or clean_doi or clean_doi or clean_journal or clean_report:
+            ref_out += '<td><small>%s %s<a href="http://dx.doi.org/%s">%s</a> %s %s</small></td>' % (h_key, m_key, clean_doi, clean_doi, clean_journal, clean_report)
         else:
-            ref_out += '<td><small>%s %s <a href="http://dx.doi.org/%s">%s</a> %s</small></td>' % (h_key, m_key, clean_doi, clean_doi, clean_journal)
-        #<input id="t%(tableid)s" type="button" onclick="insRow(this.id)" value = "V"> (the previous button for safekeeping)
+            ref_out += "<td><small> <a href=" + url + ">" + url + "</a></small></td>"
+
         format_line = """<table id="t%(tableid)s" ><tr id="tr%(tableid)s"><td>%(ordinal)s</td><td><input id="t%(tableid)s" type="image"  src="/img/add.png" onclick="insertRowAfter(%(tableid)s); return false;" value = "+"></td>%(ref_out)s</tr></table>""" % {'tableid': str(tableid), 'ref_out': ref_out, 'ordinal': ordinal}
         format_line += reference_suffix
 
