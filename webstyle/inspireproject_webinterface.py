@@ -59,7 +59,7 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
         marc_list['doi']             = '247__ $$2DOI$$a'
         marc_list['reference']       = '999c5 $$s'
         marc_list['dtype']           = '980__ $$a'
-        tid = self._write_ticket('edua2rdob555', 'MrNotUsed', 'TESTING', marc_list, form)
+        tid = self._write_ticket('eduardob', 'MrNotUsed', 'TESTING', marc_list, form)
         return invenio.webpage.page(title = "HEP Additions Form OK This is the title: " + str(tid),  
                 body = 'The form seems to have gone fine. It hakks gone to a human reviewer and should appear online in a few days.',
                                         req = request)
