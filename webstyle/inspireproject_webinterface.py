@@ -24,6 +24,7 @@ from invenio.config import CFG_SITE_URL
 from invenio.urlutils import redirect_to_url
 from invenio.webinterface_handler import WebInterfaceDirectory
 from invenio.bibtask import write_message
+from invenio import bibcatalog
 
 
 navtrail = (' <a class="navtrail" href=\"%s/inspire\">INSPIRE Utilities</a> '
@@ -33,13 +34,23 @@ navtrail = (' <a class="navtrail" href=\"%s/inspire\">INSPIRE Utilities</a> '
 class WebInterfaceInspirePages(WebInterfaceDirectory):
     """Defines the set of /inspire pages."""
 
-    _exports = ['', '/', 'hepadditions_submit']
+    _exports = ['', '/', 'hepadditions_submit','torefext']
 
     def __init__(self, recid=None):
         self.recid = recid
 
     def index(self, request):
         redirect_to_url(request, '%s' % CFG_SITE_URL)
+
+    def torefext(self, request, form):
+        ticketer = bibcatalog.BibCatalogSystemRT()
+        recid = form.get('recid', '')
+        content = 'recid: ' + recid + '\n\n' + form.get('refs', '')
+        ticket_id = ticketer.ticket_submit(subject = 'Referece list', requestor = 'eduardob', text = 'Content: ', queue = 'Test', owner = '')
+
+        if ticketer.ticket_comment(None, ticket_id, content) == None:
+            write_message("Error: commenting on ticket %s failed." % (str(ticket_id)))
+        return invenio.webpage.page(title = "To RefExtract " + str(ticket_id), body = 'Great! It was sent to RT...\n' + content, req=request)
 
     def hepadditions_submit(self, request, form):
         """Accept the hep additions form data"""
@@ -59,7 +70,7 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
         marc_list['doi']             = '247__ $$2DOI$$a'
         marc_list['reference']       = '999c5 $$s'
         marc_list['dtype']           = '980__ $$a'
-        tid = self._write_ticket('eduardob', 'MrNotUsed', 'TESTING', marc_list, form)
+        tid = self._write_ticket('eduardob', 'eduardob', 'TESTING', marc_list, form)
         return invenio.webpage.page(title = "HEP Additions Form OK This is the title: " + str(tid),  
                 body = 'The form seems to have gone fine. It hakks gone to a human reviewer and should appear online in a few days.',
                                         req = request)
@@ -106,7 +117,6 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
         return ret_str
     
     def _write_ticket(self, user_email, user_name, user_comment, marc_list, form):
-        from invenio import bibcatalog
         ticketer = bibcatalog.BibCatalogSystemRT()
         marc_str = ''        
         #for key, value in sorted(form.iteritems(), key=lambda (k,v): (v,k)):                
