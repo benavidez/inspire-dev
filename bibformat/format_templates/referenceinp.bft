@@ -12,7 +12,21 @@
 <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js'></script>
 
 <!-- Here is where I do my business -->
-
+<!-- TODO: This should be moved to a separate css file -->
+<style type='text/css'>
+.slidingDiv {
+    height:520px;
+    width:580px;
+    background-color: #99CCFF;
+    padding:10px;
+    margin-top:10px;
+    border-bottom:5px solid #3399FF;
+}
+ 
+.show_hide {
+    display:none;
+}
+</style>
 <script type="text/javascript">
 
 var referencevar;
@@ -26,7 +40,17 @@ var gCODENS = [];     // coden mapping global filled in by BFE
 
 $(document).ready(function() {
     $(window).keydown(function(event){ if(event.keyCode == 13) { event.preventDefault(); return false; } });
-    $('.cite_search_box').keydown(function(event){ if(event.keyCode == 13) { openSrchWindow(this.id); return false; } });
+    $('.cite_search_box').keydown(function(event)
+    { if(event.keyCode == 13) 
+      { openSrchWindow(this.id); return false; 
+      } 
+    });
+    
+    $(".slidingDiv").hide();
+    $(".show_hide").show();
+    $('.show_hide').click(function(){
+      $(".slidingDiv").slideToggle();
+    });
 });
 
 
@@ -64,6 +88,9 @@ function insertRowAfter(caller_id) {
     return false;
 }
 
+function refboxcheck(){
+alert("ready to submit");
+} 
 function changec(){
 
     function email_valid_p() {
@@ -180,6 +207,14 @@ function openSrchWindow(winputid) {
 
 </script>
 </head>
+<br>
+<form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
+<a href="#" class="show_hide">Submit a list of references</a>
+<div class="slidingDiv">
+<textarea cols="90" rows="40" name="refs"></textarea>
+<input type="submit" value="Send References" class="formbutton" />
+</div>
+</form>
 
 <form name="referenceinp" method="post" onSubmit="return changec();" action="http://www.slac.stanford.edu/cgi-bin/form-mail.pl">
 
@@ -222,12 +257,10 @@ function openSrchWindow(winputid) {
         <tr><TD class=left><span class="form_label">Comments</span></TD><TD class=right><textarea name="usercomment" id=usercomment rows="4" cols="35" wrap="virtual"></textarea><span class="form_label_optional">(Optional)</span></TD></TR>
 </table>
 
-<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections > <b> HELP</b> with this form</a>&nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
+<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections > <b>HELP</b> with this form</a>&nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
 <br>
-
 <small> Click on <img src="/img/add.png" alt="+"> to insert new references below existing reference</small>
 <br>
-
 <table id="t0"><tr id="tr0"><td></td><td><input type="image" id="t0" onclick="insertRowAfter(0); return false;" src="/img/add.png" alt="Search for Reference" ></td>
 <input type="hidden" name="irn" id="irn" value= "<BFE_SPIRES_IRN />">
 <td><input type="text" class="cite_search_box" name="cite" id="x0" size="35" value=""></td><td align="left">
@@ -238,5 +271,3 @@ function openSrchWindow(winputid) {
 <BFE_REFERENCEINP prefix="" suffix="" default="" escape="" reference_suffix="" reference_prefix=""/>
 <a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections><b> HELP</b> with this form</a> &nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
 </form>
-
-

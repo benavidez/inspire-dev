@@ -33,13 +33,19 @@ navtrail = (' <a class="navtrail" href=\"%s/inspire\">INSPIRE Utilities</a> '
 class WebInterfaceInspirePages(WebInterfaceDirectory):
     """Defines the set of /inspire pages."""
 
-    _exports = ['', '/', 'hepadditions_submit']
+    _exports = ['', '/', 'hepadditions_submit','torefext']
 
     def __init__(self, recid=None):
         self.recid = recid
 
     def index(self, request):
         redirect_to_url(request, '%s' % CFG_SITE_URL)
+
+    def torefext(self, request, form):
+        from invenio import bibcatalog
+        ticketer = bibcatalog.BibCatalogSystemRT()
+        ticket_id = ticketer.ticket_submit(subject = 'Referece list', requestor = user_email, text = 'Content: ' + form.get('refs', ''), queue = 'Test', owner = '')
+        return invenio.webpage.page(title = "To RefExtract: " + form.get('refs', ''), body = 'Great! It was sent to RT...', req=request)
 
     def hepadditions_submit(self, request, form):
         """Accept the hep additions form data"""
