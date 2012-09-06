@@ -22,6 +22,11 @@
     margin-top:10px;
     border-bottom:5px solid #3399FF;
 }
+textarea
+{
+   resize: none;
+}
+
  
 .show_hide {
     display:none;
@@ -39,7 +44,7 @@ var gCODENS = [];     // coden mapping global filled in by BFE
 */
 
 $(document).ready(function() {
-    $(window).keydown(function(event){ if(event.keyCode == 13) { event.preventDefault(); return false; } });
+  //  $(window).keydown(function(event){ if(event.keyCode == 13) { event.preventDefault(); return false; } });
     $('.cite_search_box').keydown(function(event)
     { if(event.keyCode == 13) 
       { openSrchWindow(this.id); return false; 
@@ -51,6 +56,8 @@ $(document).ready(function() {
     $('.show_hide').click(function(){
       $(".slidingDiv").slideToggle();
     });
+
+    $("#info").attr('title', 'if you are adding a long list of references, paste in a raw reference list into the text box, or a list of arxiv numbers, report numbers, journal references in this form:  Phys.Rev., A34, 324  ');
 });
 
 
@@ -89,7 +96,7 @@ function insertRowAfter(caller_id) {
 }
 
 function refboxcheck(){
-alert("ready to submit");
+    //any error checking for the reference list textbox goes here...
 } 
 function changec(){
 
@@ -209,9 +216,10 @@ function openSrchWindow(winputid) {
 </head>
 <br>
 <form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
-<a href="#" class="show_hide">Submit a list of references</a>
+<a href="#" id='reflink' class="show_hide">Submit a list of references<img id='info' border="0" src='/img/i.gif' /></a>
 <div class="slidingDiv">
-<textarea cols="90" rows="40" name="refs"></textarea>
+<textarea cols="78" rows="32" name="refs"></textarea>
+<input type="hidden" name="recid" id="recid" value= "<BFE_RECORD_ID />">
 <input type="submit" value="Send References" class="formbutton" />
 </div>
 </form>
