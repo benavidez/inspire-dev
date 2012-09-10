@@ -22,12 +22,20 @@
     margin-top:10px;
     border-bottom:5px solid #3399FF;
 }
-textarea
-{
-   resize: none;
+
+#username, #realname, #usercomment{
+    display: inline-block;
+    width: 400px;
+    border: 1px solid #bbbbbb;
+    padding: 3px 26px 3px 3px;
 }
 
- 
+
+
+
+
+
+
 .show_hide {
     display:none;
 }
@@ -214,15 +222,6 @@ function openSrchWindow(winputid) {
 
 </script>
 </head>
-<br>
-<form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
-<a href="#" id='reflink' class="show_hide">Submit a list of references<img id='info' border="0" src='/img/i.gif' /></a>
-<div class="slidingDiv">
-<textarea cols="78" rows="32" name="refs"></textarea>
-<input type="hidden" name="recid" id="recid" value= "<BFE_RECORD_ID />">
-<input type="submit" value="Send References" class="formbutton" />
-</div>
-</form>
 
 <form name="referenceinp" method="post" onSubmit="return changec();" action="http://www.slac.stanford.edu/cgi-bin/form-mail.pl">
 
@@ -259,23 +258,34 @@ function openSrchWindow(winputid) {
 
 </div>
 <div style="clear:both;height:1px">&nbsp;</div>
+<br/><br/>
+<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections><b> HELP</b> with this form</a> 
 <table>
         <TR><TD class=left><span class="form_label">Your Email</span></TD><TD class=right><INPUT size=35 name="username" id="username"><span class="form_label_required">(Required)</span></TD></TR>
         <TR><TD class=left><span class="form_label">Your Name</span></TD><TD class=right><INPUT size=35 name=realname id=realname><span class="form_label_optional">(Optional)</span></TD></TR>
-        <tr><TD class=left><span class="form_label">Comments</span></TD><TD class=right><textarea name="usercomment" id=usercomment rows="4" cols="35" wrap="virtual"></textarea><span class="form_label_optional">(Optional)</span></TD></TR>
+        <tr><TD class=left><span class="form_label">Comments</span></TD><TD class=right><textarea name="usercomment" id=usercomment rows="4" cols="50" wrap="virtual"></textarea><span class="form_label_optional">(Optional)</span></TD></TR>
 </table>
+<br/><br/>
+<br/>
 
-<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections > <b>HELP</b> with this form</a>&nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
-<br>
+<form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
+<a href="#" id='reflink' class="show_hide">Submit a list of references</a><a href='#' id='info'><img src="/img/i.gif"  border=0 /></a>
+<div class="slidingDiv">
+<textarea cols="79" rows="32" name="refs"></textarea>
+<input type="hidden" name="recid" id="recid" value= "<BFE_RECORD_ID />">
+<input type="submit" value="Submit References" class="formbutton" />
+</div>
+</form>
+<br/>
 <small> Click on <img src="/img/add.png" alt="+"> to insert new references below existing reference</small>
 <br>
 <table id="t0"><tr id="tr0"><td></td><td><input type="image" id="t0" onclick="insertRowAfter(0); return false;" src="/img/add.png" alt="Search for Reference" ></td>
 <input type="hidden" name="irn" id="irn" value= "<BFE_SPIRES_IRN />">
 <td><input type="text" class="cite_search_box" name="cite" id="x0" size="35" value=""></td><td align="left">
     <a href="#" onclick="openSrchWindow('x0'); return false;" ><img src="/img/search.png"  border=0 alt="+"> Search for Citation</a>
-<input type="hidden" name="subf" id="sx0"> <input type="hidden" name="jmarc" id="mx0">
-</td></tr></table>
+<input type="hidden" name="subf" id="sx0"> <input type="hidden" name="jmarc" id="mx0"></td></tr>
+</table>
 
 <BFE_REFERENCEINP prefix="" suffix="" default="" escape="" reference_suffix="" reference_prefix=""/>
-<a href=<BFE_SERVER_INFO var="CFG_SITE_URL">help/reference_corrections><b> HELP</b> with this form</a> &nbsp; &nbsp; <input type="submit" name="submit" value="Send" class="formbutton" />
 </form>
+<br/><input type="submit" name="submit" value="Submit Form" class="formbutton" />
