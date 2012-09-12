@@ -271,6 +271,8 @@ class Template(DefaultTemplate):
         middle_option = ""
 
         if collection_id == "HEP":
+            return ''
+            """
             # add easy search link
             easy_search_link = create_html_link("%s/help/easy-search%s" % (CFG_SITE_URL, langlink), {}, _("Easy Search")) + "<br/>"
 
@@ -281,6 +283,7 @@ class Template(DefaultTemplate):
                  selected=of,
                  values=self._add_mark_to_field(value=of, fields=CFG_SEARCH_INSPIRE_OUTPUT_FORMATS, chars=3, ln=ln),
                  css_class=''),)
+            """
         # print commentary start:
         if collection_id == "Jobs":
             # print Jobs Search form:

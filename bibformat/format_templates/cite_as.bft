@@ -26,6 +26,7 @@ function valtoReferenceinp(recid) {
       if (referencevar == "") {
          referencevar = irnvar;
       }
+
       var targfieldv = window.opener.document.referenceinp.targfield.value;
       var targfield2v = window.opener.document.referenceinp.targfieldtwo.value;
       var targfield3v = window.opener.document.referenceinp.targfldthree.value;
@@ -36,7 +37,6 @@ function valtoReferenceinp(recid) {
 }
 </script>
 </head>
-
 <p>
  <div id="detailedrecordshortreminder">
     <form  action="" method="POST">

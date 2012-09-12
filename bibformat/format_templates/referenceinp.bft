@@ -208,6 +208,10 @@ function openSrchWindow(winputid) {
      var subfretid = "s" + winputid;
      var pubnretid = "m" + winputid;
      var searchvar = document.getElementById(winputid).value;
+     if (searchvar == "") {
+        alert("Please enter a search criteria.");
+        return;
+     }
      var subfretvar = document.getElementById(subfretid).value;
      var pubnretvar = document.getElementById(pubnretid).value;
      document.getElementById('targfield').value = winputid;
