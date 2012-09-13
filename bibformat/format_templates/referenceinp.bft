@@ -16,11 +16,9 @@
 <style type='text/css'>
 .slidingDiv {
     height:520px;
-    width:580px;
-    background-color: #99CCFF;
-    padding:10px;
-    margin-top:10px;
-    border-bottom:5px solid #3399FF;
+    width:580px;    
+    padding:20px;
+    margin-top:15px;
 }
 
 #username, #realname, #usercomment{
@@ -29,11 +27,6 @@
     border: 1px solid #bbbbbb;
     padding: 3px 26px 3px 3px;
 }
-
-
-
-
-
 
 
 .show_hide {
@@ -280,7 +273,7 @@ function openSrchWindow(winputid) {
 <input type="submit" value="Submit References" class="formbutton" />
 </div>
 </form>
-<br/>
+<br/><br/>
 <small> Click on <img src="/img/add.png" alt="+"> to insert new references below existing reference</small>
 <br>
 <table id="t0"><tr id="tr0"><td></td><td><input type="image" id="t0" onclick="insertRowAfter(0); return false;" src="/img/add.png" alt="Search for Reference" ></td>
