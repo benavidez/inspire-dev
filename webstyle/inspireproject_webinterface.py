@@ -45,12 +45,32 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
     def torefext(self, request, form):
         ticketer = bibcatalog.BibCatalogSystemRT()
         recid = form.get('recid', '')
-        content = 'recid: ' + recid + '\n\n' + form.get('refs', '')
-        ticket_id = ticketer.ticket_submit(subject = 'Referece list', requestor = 'eduardob', text = 'Content: ', queue = 'Test', owner = '')
+
+        form_content = ''
+        cites = ''
+        for k in form.keys():
+            if (k == 'cite'):
+                cite_list = form[k]
+                for l in cite_list:
+                    cites = cites + str(l) + '\n '
+                form_content = form_content + k + ': ' + cites + '\n' 
+            else:
+                form_content = form_content + k + ': ' + str(form.get(k, '')) + '\n'
+        
+        ref_list = form['refs'].split('\n')
+        ref_str = ''
+        for r in ref_list:
+            ref_str = ref_str + '$$ ' + r + '\n'
+
+        content = 'recid: ' + recid + ';\n\n' + 'User Name: ' + str(form.get('username', '')) + '\n\n' + str(form.get('dateupd', '')) + '\n\n' + 'Comments from user:\n ' + \
+                str(form.get('usercomment', '')) + '\n\n' + ref_str + '\n\n' + cites
+        #content = content + '\n' + form_content
+
+        ticket_id = ticketer.ticket_submit(subject = str(form.get('subject', '')), requestor = str(form.get('username', '')), priority='1', text = 'Content in comment', queue = 'Test', owner = '')
 
         if ticketer.ticket_comment(None, ticket_id, content) == None:
             write_message("Error: commenting on ticket %s failed." % (str(ticket_id)))
-        return invenio.webpage.page(title = "To RefExtract " + str(ticket_id), body = 'Great! It was sent to RT...\n' + content, req=request)
+        return invenio.webpage.page(title = "Thank you ", body = str(form.get('response_msg', '')), req=request)
 
     def hepadditions_submit(self, request, form):
         """Accept the hep additions form data"""

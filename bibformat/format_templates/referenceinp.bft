@@ -12,6 +12,7 @@
 <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js'></script>
 
 <!-- Here is where I do my business -->
+<!-- Handler for this for is at: /home/eduardob-local/src/inspire/webstyle/inspireproject_webinterface.py -->
 <!-- TODO: This should be moved to a separate css file -->
 <style type='text/css'>
 .slidingDiv {
@@ -98,7 +99,16 @@ function insertRowAfter(caller_id) {
 
 function refboxcheck(){
     //any error checking for the reference list textbox goes here...
-} 
+    if (changec()){
+       alert(document.getElementByName('refs'));
+       if (document.getElementByName('refs') != ""){
+          alert("submitting refs");
+       }   
+       return true;
+    }
+    return false;
+}
+
 function changec(){
 
     function email_valid_p() {
@@ -129,7 +139,6 @@ function changec(){
     }
 
     //this section modifies the fields...
-
     var xcnt = document.getElementById('fieldcnt').value;
     var ccnt = document.getElementsByName('cite').length - xcnt;
     var ncnt = xcnt - 1;
@@ -220,8 +229,8 @@ function openSrchWindow(winputid) {
 </script>
 </head>
 
-<form name="referenceinp" method="post" onSubmit="return changec();" action="http://www.slac.stanford.edu/cgi-bin/form-mail.pl">
-
+<!--form name="referenceinp" method="post" onSubmit="return changec();" action="http://www.slac.stanford.edu/cgi-bin/form-mail.pl"-->
+<form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
 
 <input type=hidden value="1" id="fieldcnt" name="storecnt">
 <INPUT type=hidden value=spires@slac.stanford.edu   name=to id=tofield>
@@ -263,17 +272,13 @@ function openSrchWindow(winputid) {
         <tr><TD class=left><span class="form_label">Comments</span></TD><TD class=right><textarea name="usercomment" id=usercomment rows="4" cols="50" wrap="virtual"></textarea><span class="form_label_optional">(Optional)</span></TD></TR>
 </table>
 <br/><br/>
-<br/>
 
-<form name="refbox" method="post" onSubmit="return refboxcheck();" action="/inspire/torefext">
 <a href="#" id='reflink' class="show_hide">Submit a list of references</a><a href='#' id='info'><img src="/img/i.gif"  border=0 /></a>
 <div class="slidingDiv">
-<textarea cols="79" rows="32" name="refs"></textarea>
-<input type="hidden" name="recid" id="recid" value= "<BFE_RECORD_ID />">
-<input type="submit" value="Submit References" class="formbutton" />
+<textarea cols="79" rows="32" name="refs" id='refs'></textarea>
 </div>
-</form>
 <br/><br/>
+
 <small> Click on <img src="/img/add.png" alt="+"> to insert new references below existing reference</small>
 <br>
 <table id="t0"><tr id="tr0"><td></td><td><input type="image" id="t0" onclick="insertRowAfter(0); return false;" src="/img/add.png" alt="Search for Reference" ></td>
@@ -284,5 +289,6 @@ function openSrchWindow(winputid) {
 </table>
 
 <BFE_REFERENCEINP prefix="" suffix="" default="" escape="" reference_suffix="" reference_prefix=""/>
-</form>
 <br/><input type="submit" name="submit" value="Submit Form" class="formbutton" />
+<br/>
+</form>
