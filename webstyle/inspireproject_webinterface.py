@@ -60,7 +60,8 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
         ref_list = form['refs'].split('\n')
         ref_str = ''
         for r in ref_list:
-            ref_str = ref_str + '$$ ' + r + '\n'
+            if(r != ""):
+                ref_str = ref_str + '$$ ' + r + '\n'
 
         content = 'recid: ' + recid + ';\n\n' + 'User Name: ' + str(form.get('username', '')) + '\n\n' + str(form.get('dateupd', '')) + '\n\n' + 'Comments from user:\n ' + \
                 str(form.get('usercomment', '')) + '\n\n' + ref_str + '\n\n' + cites

@@ -12,7 +12,7 @@
 <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js'></script>
 
 <!-- Here is where I do my business -->
-<!-- Handler for this for is at: /home/eduardob-local/src/inspire/webstyle/inspireproject_webinterface.py -->
+<!-- Handler for this for is at: ... src/inspire/webstyle/inspireproject_webinterface.py -->
 <!-- TODO: This should be moved to a separate css file -->
 <style type='text/css'>
 .slidingDiv {
@@ -99,10 +99,9 @@ function insertRowAfter(caller_id) {
 
 function refboxcheck(){
     //any error checking for the reference list textbox goes here...
-    if (changec()){
-       alert(document.getElementByName('refs'));
-       if (document.getElementByName('refs') != ""){
-          alert("submitting refs");
+    if (changec() == true){
+       if (document.getElementById('refs').value != ""){
+          alert(document.getElementById('refs').value);
        }   
        return true;
     }
@@ -134,7 +133,7 @@ function changec(){
     }
     if (!email_valid_p()) {
         alert("The \"email\" field must not be empty, and must contain an \"@\" and a \".\".");
-        document.referenceinp.username.focus();
+        document.getElementById('username').focus();
         return false;
     }
 
