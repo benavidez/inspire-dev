@@ -61,10 +61,10 @@ class WebInterfaceInspirePages(WebInterfaceDirectory):
         ref_str = ''
         for r in ref_list:
             if(r != ""):
-                ref_str = ref_str + '$$ ' + r + '\n'
+                ref_str = ref_str + r + '\n'
 
-        content = 'recid: ' + recid + ';\n\n' + 'User Name: ' + str(form.get('username', '')) + '\n\n' + str(form.get('dateupd', '')) + '\n\n' + 'Comments from user:\n ' + \
-                str(form.get('usercomment', '')) + '\n\n' + ref_str + '\n\n' + cites
+        content = 'recid: ' + recid + ';\n\n' + 'User Name: ' + str(form.get('username', '')) + '\n\n' + str(form.get('dateupd', '')) + '\n\n' + 'Comments from user:,\n ' + \
+                str(form.get('usercomment', '')) + '\n\n' + 'From Reference Box:\n' + ref_str + '\n\n' + 'Existing References:\n' + cites
         #content = content + '\n' + form_content
 
         ticket_id = ticketer.ticket_submit(subject = str(form.get('subject', '')), requestor = str(form.get('username', '')), priority='1', text = 'Content in comment', queue = 'Test', owner = '')

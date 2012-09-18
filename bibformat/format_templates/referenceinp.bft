@@ -101,7 +101,7 @@ function refboxcheck(){
     //any error checking for the reference list textbox goes here...
     if (changec() == true){
        if (document.getElementById('refs').value != ""){
-          alert(document.getElementById('refs').value);
+          //alert(document.getElementById('refs').value);
        }   
        return true;
     }
