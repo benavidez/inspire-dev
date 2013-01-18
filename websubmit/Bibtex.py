@@ -30,7 +30,7 @@ def Bibtex(parameters, curdir, form, user_info=None):
        This is the function called by the BiblioTools web app. 
        It extracts a list of references from a LaTeX file and it converts them to BibTex or LaTeX US/EU
     """
-    
+
     btxt_str ="" 
     
     # get file name and hold it in a string
@@ -39,9 +39,9 @@ def Bibtex(parameters, curdir, form, user_info=None):
         file_name = os.path.join(dirname, f[0])    
     
     if (os.path.exists(file_name)):
-        inputTeX = open(file_name)
-        lines = inputTeX.read()
-        inputTeX.close()
+	inputTeX = open(file_name)
+    	lines = inputTeX.read()
+    	inputTeX.close()
  
     #Get out_format field
     try:
@@ -51,7 +51,6 @@ def Bibtex(parameters, curdir, form, user_info=None):
         fp.close()
     except:
         format = ""
-    
     references = get_references(lines)
     btxt_str = process_references(references, format)
     btxt_str = '<div style=\"color:#222222;background:white\"><pre>' + btxt_str + '</pre></div>'
@@ -62,7 +61,6 @@ def get_references(lines):
     """ 
        Extract references from LaTeX string (whole file) 
     """
-    
     references = []
     #remove comments
     lines = re.sub('(?<!\\\\)%.*?\n', '', lines, re.MULTILINE)
@@ -82,7 +80,7 @@ def process_references(references, format):
     """ 
        Process a list of references and convert them to a given format
     """
-
+     
     btxt_str = '' #result string
     for x in references:
         index = None
@@ -116,10 +114,9 @@ def process_references(references, format):
                             #bibtex
                             if not re.search('\@article\{' + x + '}', formated_rec):
                                 formated_rec = re.sub('\@article\{(.*)\,', '@article{' + x + ',', formated_rec)
-	 	            btxt_str = btxt_str + formated_rec + '\n'	    	
+                    btxt_str = btxt_str + formated_rec + '\n'
                 else:
-		            btxt_str = btxt_str + bfe_INSPIRE_bibtex.format_element(bfo) + '\n'
+                    btxt_str = btxt_str + bfe_INSPIRE_bibtex.format_element(bfo) + '\n'
             else:
                 btxt_str = btxt_str + '*** Not Found: ' + x + ' ' + p_to_find + '\n\n'
-              
     return btxt_str
