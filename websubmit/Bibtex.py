@@ -39,7 +39,7 @@ def Bibtex(parameters, curdir, form, user_info=None):
         file_name = os.path.join(dirname, f[0])    
     
     if (os.path.exists(file_name)):
-	inputTeX = open(file_name)
+	    inputTeX = open(file_name)
     	lines = inputTeX.read()
     	inputTeX.close()
  
