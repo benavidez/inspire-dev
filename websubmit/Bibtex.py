@@ -39,9 +39,9 @@ def Bibtex(parameters, curdir, form, user_info=None):
         file_name = os.path.join(dirname, f[0])    
     
     if (os.path.exists(file_name)):
-	    inputTeX = open(file_name)
-    	lines = inputTeX.read()
-    	inputTeX.close()
+        inputTeX = open(file_name)
+        lines = inputTeX.read()
+        inputTeX.close()
  
     #Get out_format field
     try:
@@ -103,22 +103,22 @@ def process_references(references, format):
             recid_list = perform_request_search(p= p_to_find)
             if recid_list:
                 bfo = BibFormatObject(recid_list[0])
-	  	if (format == 'hlxu' or format == 'hlxe' or format == 'hx'):
-                   formated_rec = format_record(recid_list[0], format, 'en')
-                   #update bibitem and cite if they don't match   
-                   if not re.search('bibitem{' + x + '}', formated_rec):
-                       x = re.sub(',', '.', x)
-                       if format != 'hx':
-                           #laTek   
-                           formated_rec = re.sub('bibitem{(.*)}', 'bibitem{' + x + '}', formated_rec)
-                           formated_rec = re.sub('cite{(.*)}', 'cite{' + x + '}', formated_rec)
-                       else:
-                           #bibtex
-                           if not re.search('\@article\{' + x + '}', formated_rec):
-                               formated_rec = re.sub('\@article\{(.*)\,', '@article{' + x + ',', formated_rec)
-	 	   btxt_str = btxt_str + formated_rec + '\n'	    	
+                if (format == 'hlxu' or format == 'hlxe' or format == 'hx'):
+                    formated_rec = format_record(recid_list[0], format, 'en')
+                    #update bibitem and cite if they don't match   
+                    if not re.search('bibitem{' + x + '}', formated_rec):
+                        x = re.sub(',', '.', x)
+                        if format != 'hx':
+                            #laTek   
+                            formated_rec = re.sub('bibitem{(.*)}', 'bibitem{' + x + '}', formated_rec)
+                            formated_rec = re.sub('cite{(.*)}', 'cite{' + x + '}', formated_rec)
+                        else:
+                            #bibtex
+                            if not re.search('\@article\{' + x + '}', formated_rec):
+                                formated_rec = re.sub('\@article\{(.*)\,', '@article{' + x + ',', formated_rec)
+	 	            btxt_str = btxt_str + formated_rec + '\n'	    	
                 else:
-		   btxt_str = btxt_str + bfe_INSPIRE_bibtex.format_element(bfo) + '\n'
+		            btxt_str = btxt_str + bfe_INSPIRE_bibtex.format_element(bfo) + '\n'
             else:
                 btxt_str = btxt_str + '*** Not Found: ' + x + ' ' + p_to_find + '\n\n'
               
