@@ -30,7 +30,6 @@ def Bibtex(parameters, curdir, form, user_info=None):
        This is the function called by the BiblioTools web app. 
        It extracts a list of references from a LaTeX file and it converts them to BibTex or LaTeX US/EU
     """
-
     btxt_str ="" 
     
     # get file name and hold it in a string
@@ -107,7 +106,7 @@ def process_references(references, format):
                     if not re.search('bibitem{' + x + '}', formated_rec):
                         x = re.sub(',', '.', x)
                         if format != 'hx':
-                            #laTek   
+                            #laTek
                             formated_rec = re.sub('bibitem{(.*)}', 'bibitem{' + x + '}', formated_rec)
                             formated_rec = re.sub('cite{(.*)}', 'cite{' + x + '}', formated_rec)
                         else:
