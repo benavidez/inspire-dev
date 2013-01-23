@@ -62,9 +62,14 @@ def get_references(lines):
     """
     references = []
     #remove comments
-    lines = re.sub('(?<!\\\\)%.*?\n', '', lines, re.MULTILINE)
+    #lines = re.sub('(?<!\\\\)%.*?\n', '', lines, re.MULTILINE)
+    """ strip TeX comments from text strings, possibly multiline"""
+    cstrip = re.compile(r'(?<!\\)%.*$',re.M)
+    lines = cstrip.sub('',lines)
+    
     #extract cites
-    cites = re.findall(r'\\cite\s*\{(.*?)\}', lines)
+    cites = re.findall(r'\\cite\s*\{(.*?)\}', lines, re.M|re.DOTALL) 
+    
     #extract multiple references separated by commnas
     for a in cites:
         r = a.split(',')
