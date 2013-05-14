@@ -108,10 +108,15 @@ def process_references(references, output_format):
             # hack to match more records
             if index == 'texkey':
                 p_to_find = '035__z: ' + x
+		recid_list = perform_request_search(p=p_to_find)
+		if not recid_list:
+			#try 035__a
+                	p_to_find = '035__a: ' + x
+			recid_list = perform_request_search(p=p_to_find)
             else:
                 p_to_find = 'find ' + index + ' ' + x
+		recid_list = perform_request_search(p=p_to_find)
 
-            recid_list = perform_request_search(p=p_to_find)
             if recid_list:
                 bfo = BibFormatObject(recid_list[0])
                 if (output_format == 'hlxu' or output_format == 'hlxe' or output_format == 'hx'):
