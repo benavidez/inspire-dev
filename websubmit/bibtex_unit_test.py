@@ -143,6 +143,18 @@ class TestBibtex(unittest.TestCase):
 
         self.assertEqual(expected, str(cites[0]))
 
+    def test_search_texkey(self):
+  	print '\ntest8\n'
+        lines = """
+	\cite{Schneider:2013iba}
+	"""
+
+	refs = Bibtex.get_references(lines)
+	format = 'hx'
+        ret = Bibtex.process_references(refs, format)
+        self.assertTrue(ret.index('@article'))
+
+
 def main():
     unittest.main()
 
