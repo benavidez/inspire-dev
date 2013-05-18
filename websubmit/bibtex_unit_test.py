@@ -118,29 +118,29 @@ class TestBibtex(unittest.TestCase):
         tests = []
         comment1 = r'% simple comment'
         comment2 = r'this is 99\% of all'
-        comment3 = r"""
+        comment3 = """
         \documentclass{article}
         % this is my article
         \\begin{document}
         some intro % need to fix
         but 90\% is already ok"""
 
-        comment4 = r'line1\n%comment1\nline2%comment2\n\%line3\n'
+        comment4 = 'line1\n%comment1\nline2%comment2\n\%line3\n'
         tests.append(comment1)
         tests.append(comment2)
         tests.append(comment3)
         tests.append(comment4)
         expected = []
         expected.append('')
-        expected.append(r'this is 99\% of all')
-        expected.append(r"""
+        expected.append('this is 99\% of all')
+        expected.append("""
         \documentclass{article}
         
         \\begin{document}
         some intro 
         but 90\% is already ok""")  
 
-        expected.append(r'line1\n\nline2\n\%line3\n')
+        expected.append('line1\n\nline2\n\%line3\n')
        
         #strip TeX comments from text strings, possibly multiline
         cstrip = re.compile(r'(?<!\\)%.*$', re.M)
