@@ -112,7 +112,7 @@ def process_references(references, output_format):
         if index:
             # hack to match more records
             if index == 'texkey':
-                p_to_find = '035__z: '
+                p_to_find = '035__z: ' + ref
                 recid_list = perform_request_search(p=p_to_find)
                 if not recid_list:
                     #try 035__a
