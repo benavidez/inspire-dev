@@ -144,7 +144,7 @@ def process_references(references, output_format):
                                               formated_rec):
                                 formated_rec = re.sub(r'\@article\{(.*)\,', 
                                         r'@article{' + ref + ',', formated_rec)
-                        btxt_str = btxt_str + formated_rec + '\n'
+                    btxt_str = btxt_str + formated_rec + '\n'
                 else:
                     btxt_str = (btxt_str + 
                                 bfe_INSPIRE_bibtex.format_element(bfo) + '\n')
