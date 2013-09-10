@@ -1,0 +1,30 @@
+<name>Journal Record Brief</name>
+<description>Journal display</description>
+<hr/>
+<table>
+<tr>
+<td>
+<BFE_JOURNALCOVER />
+</td>
+<td>
+<bfe_openaccess/>
+<BFE_RECORD_ID prefix='<a href="/record/' suffix='">'>
+<BFE_TITLE_BRIEF highlight="no" prefix='<strong>' suffix="</strong></a>"/>
+<br/>
+<font size="-2">
+<BFE_FIELD tag="082__$a"
+prefix="<br /><strong>DDC: </strong>"
+instances_separator=", "
+ />
+<BFE_FIELD tag="650_7$a"
+prefix="<br /><strong>Keywords(s): </strong><i>"
+instances_separator=", "
+suffix="</i>"
+ />
+</font>
+<BFE_SFX/>
+
+<small><BFE_JCRLINK/></small>
+</td
+</tr>
+</table>

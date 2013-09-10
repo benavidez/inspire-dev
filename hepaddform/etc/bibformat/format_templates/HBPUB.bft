@@ -1,0 +1,6 @@
+<name>HBPUB</name>
+<description>Brief format for publication type authorities</description>
+<BFE_RECORD_ID prefix='<a href="/record/' suffix='">'>
+<BFE_FIELD tag='155__a' prefix='<strong>' suffix="</strong></a>"/>
+<BFE_IDNUMBER prefix='(' suffix=')' subfield='w' src="d" tag="4102_" onlyfirst='no' printfield='a' />
+<BFE_FIELD prefix='<font size="-2">[' suffix=']</font>' tag='035__a'/>

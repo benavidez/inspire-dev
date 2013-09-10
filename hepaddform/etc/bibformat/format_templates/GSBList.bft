@@ -1,0 +1,14 @@
+<name>GSB-List</name>
+<description>Literaturlisten f. GSB</description>
+<p>
+<font face="Arial, Helvetica, Verdana, sans-serif" size="-1">
+<bfe_typelist suffix='<br/>' />
+<font color="#0a3e75">
+<BFE_AUTHORS_HGF prefix="" suffix="<br/>" default="" escape="" affiliation_suffix=")" extension="[...]" limit="3" print_links="yes" separator=" ; " print_affiliations="no" highlight="no" interactive="no" affiliation_prefix=" ("/>
+</font>
+<BFE_RECORD_URL prefix='<a href="' suffix='" target="_blank">' />
+<img src='http://www.fz-juelich.de/common/icons/go_open.gif' border='0'>&nbsp;
+<BFE_TITLE prefix="<b>" suffix="</b></a><br/>" default="" escape="" highlight="yes" separator=" "/>
+<BFE_JOURNALREFERENCE />
+<BFE_OPENURLLNK />
+</p>

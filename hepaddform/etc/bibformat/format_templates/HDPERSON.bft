@@ -1,0 +1,27 @@
+<name>HDPERSON</name>
+<description>HTML Detailed for people</description>
+<div style="padding-left:10px;padding-right:10px">
+<BFE_FIELD tag='100%%g'/>
+<h2><BFE_FIELD tag='100%%a'/></h2>
+
+<table width="80%">
+<tr>
+<BFE_FIELDSORT tag='371__c' sortfield='t' limit='1' descending='True' prefix='<td>Institute</td><td>' suffix='</td>' />
+</tr>
+<tr>
+<BFE_FIELDSORT tag='371__a' sortfield='t' limit='1' descending='True' prefix='<td>Location</td><td>'  suffix='</td>' />
+</tr>
+<tr>
+<BFE_FIELDSORT tag='371__p' sortfield='t' limit='1' descending='True' prefix='<td>Phone</td><td>'     suffix='</td>' />
+</tr>
+<tr>
+<BFE_FIELDSORT tag='371__m' sortfield='t' limit='1' descending='True' prefix='<td>e-Mail</td><td>'    suffix='</td>' />
+</tr>
+<tr>
+<BFE_FIELD prefix='<td>ID</td><td>' suffix='</td>' tag='035__a'/>
+</tr>
+</table>
+
+<BFE_PUBLIST prefix="<h3>Recent Publications</h3>" src='author'/>
+
+</div>

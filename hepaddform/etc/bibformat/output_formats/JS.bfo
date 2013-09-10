@@ -1,0 +1,8 @@
+tag 980__a:
+StatID --- JSSTAT.bft
+PERI   --- JSPERI.bft
+PUB    --- JSPUB.bft
+I   --- JSINST.bft
+P   --- JSPERSON.bft
+G --- JSGRANT.bft
+default: JSPERI.bft

@@ -1,0 +1,11 @@
+<name>JSPERSON</name>
+<description>JSON for persons authority data</description>
+{
+"label"     : "<BFE_FIELD tag='1001_a'/> (<BFE_FIELD tag='371__c' limit='1'/> / <BFE_FIELDSORT tag='371__m' sortfield='t' limit='1' descending='True'/>)",
+<BFE_FIELD     prefix='"I1001_0"   : "' suffix='",' tag='035__a' />
+<BFE_FIELD     prefix='"I1001_a"   : "' suffix='",' tag='1001_a' />
+<BFE_FIELDSORT prefix='"I371__0"   : "' suffix='",' tag='371__0' sortfield='t' instances_separator="|" descending='True'/>
+<BFE_FIELDSORT prefix='"I371__m"   : "' suffix='",' tag='371__m' sortfield='t' instances_separator="|" descending='True'/>
+<BFE_FIELDSORT prefix='"I371__c"   : "' suffix='",' tag='371__c' sortfield='t' instances_separator="|" descending='True'/>
+<BFE_FIELDSORT prefix='"I373__0"   : "' suffix='",' tag='373__0' sortfield='t' instances_separator="|" descending='True'/>
+},

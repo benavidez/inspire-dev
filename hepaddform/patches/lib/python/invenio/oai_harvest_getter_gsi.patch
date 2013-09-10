@@ -1,0 +1,26 @@
+--- oai_harvest_getter_orig.py	2012-07-19 14:24:47.000000000 +0200
++++ oai_harvest_getter_gsi.py	2012-07-20 11:04:01.000000000 +0200
+@@ -33,6 +33,7 @@
+     import re
+     import time
+     import base64
++    import os
+ except ImportError, e:
+     print "Error: %s" % e
+     sys.exit(1)
+@@ -267,6 +268,15 @@
+                "From": CFG_SITE_ADMIN_EMAIL,
+                "User-Agent":"Invenio %s" % CFG_VERSION}
+ 
++    proxy = os.getenv('http_proxy')
++    if proxy:
++        if proxy.startswith('http://'):
++            proxy = proxy[7:]
++        proxy = proxy.strip('/ ')
++        if len(proxy) > 0:
++            script = 'http://' + server + script
++            server = proxy
++
+     if password:
+         # We use basic authentication
+         headers["Authorization"] = "Basic " + base64.encodestring(user + ":" + password).strip()

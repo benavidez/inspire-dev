@@ -1,0 +1,70 @@
+README: Generating Submission Forms
+
+Pre-requirements
+================
+1. python Version >= 2.3
+2. Install python package ConfigObject (http://pypi.python.org/pypi/configobj)
+3. Install perl (list of package dependencies will be available soon) 
+4. in invenio-local.conf set variable CFG_WEBSTYLE_TEMPLATE_SKIN = Institutes-name (i.e. CERN, DESY, GSI, FZJ,... . Same shortname has to be used in the configuration file "config.cfg"). If local variable not set, default(DESY) submission forms are created
+5. After changes in local-conf do not forget "inveniocfg --update-all" :)
+6. load DEMO-Documenttypes (because we have to clone some functionalities)
+7. load Authorities (Publication Types, Authors, Institutes, Journals,.... ) (if no authorities loaded--> websubmit form should be displayed correct, but a real submission will run into an error!)
+
+
+Create submit/modify forms
+==========================
+In command-line interface: 
+	-cd $INVENIO-Installation/etc/websubmit/ 
+	-python process_confobj.py -arg config.cfg (arguments= c:create, d:delete)
+	--> all submit/modify forms are created depending on the configuration in config.cfg. So, before running process_confobj.py make sure your individual configurations are already in config.cfg
+
+Configuration of config.cfg
+===========================
+It consists of the following main sections:
+
+-SCHEMA defines the schema on the submission webpage.
+-COLLECTION defines which doctypes belong to which submissionCollection.
+-ORDER defines the field order in the forms (which field should be listed above/below of another) 
+-DEFAULT_FORM sets common fields which appear 'quite' often in 		 documenttypes. Any other document_form which is defined under 'Institutional Configuration' will be checked against this default_form. It has the advantage, that we do not have to define the same fields for most of the documenttypes again. Instead we make only changes to the default_form to create new individual documenttypes.
+
+	structure of the default form:
+	[default_form]
+	fieldname = description, "o/m" (optional/mandatory), "order(digit)" (set new field order)  
+	hgf_start = Submission,o
+	hgf_9201_a = Division / Group involved,m,10
+	hgf_913__v = Large Scale Facility / Beamline,m,10000
+	hgf_245__a = Title,m
+
+-DEFAULT configuration 
+-DESY configuration
+	
+	Example 1:
+	in the default_form we have the field 
+	hgf_920__l = Support by HGF-Employee,o
+	
+	in the DESY-form we want to do some changes:
+	hgf_920__l = Support by DESY-Employee,m, 5000 
+	-->We change the short description of the field, we make it mandatory ("m") and move it to appear after all fields, which have the order <5000 (defined order)  
+
+	Example 2:
+	hgf_920__l = -,m 
+	-->We do not change the short description ("-"), which is defined in the default_form, but we make it mandatory ("m")
+
+	Example 3:
+	field (i.e. hgf_920__l) from the default_form has not to appear in the submission form of a specific document type:
+	[document type]
+	hgf_920__l = None
+
+	Example 4:
+	if a field (i.e. hgf_abstract, which is not in default_form) has to be added
+	hgf_500__a = Abstract:,o  ("-" is not allowed)
+	-->we set short description to "Abstract:" and make the field optional 
+	WARNING: you can only add fields, which are defined under FIELDDESC!!! 	
+
+-GSI configuration
+-FZJ configuration
+-RWTH configuration
+-CERN configuration   
+
+-FIELDDESC defines all submission fields
+

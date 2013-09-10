@@ -1,0 +1,27 @@
+--- websubmit_templates.py	2012-07-12 09:03:34.000000000 +0200
++++ websubmit_templates_hgf.py	2012-07-12 09:09:58.000000000 +0200
+@@ -722,18 +722,12 @@
+                               }
+                 elif radio[i] != 0:
+                     # If the field is a radio buttonset
+-                    out += """var check=0;
+-                              for (var j = 0; j < el.length; j++) {
+-                                if (el.options[j].checked){
+-                                  check++;
+-                                }
+-                              }
+-                              if (check == 0) {
+-                                alert("%(press_button)s");
+-                                return 0;
+-                              }""" % {
+-                                'press_button':_("Please press a button.")
+-                              }
++                    out += """
++                              var v =  $("input[name='%s']:checked").val();
++                              if (v === undefined) {
++                              alert("The field %s is mandatory. Please fill it in.");
++                              return 0;
++                              }""" % (field[i],txt[i])
+                 else:
+                     # If the field is a text input
+                     out += """if (el.value == '') {

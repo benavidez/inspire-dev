@@ -29,6 +29,10 @@ test:
 install:
 	@echo "Installing new code and support files..."
 	$(foreach SUBDIR, $(SUBDIRS), cd $(SUBDIR) && make install && cd .. ;)
+	@echo "Installing hep additions form files..."
+	sleep 3
+	hepaddform/bin/contrib/InstallInvenio_inspire
+	@echo "Done."
 	@echo "Done.  You may want to copy $(ETCDIR)/invenio-local.conf-example to $(ETCDIR)/invenio-local.conf, edit commented parts, run inveniocfg --update-all --reset-all and restart Apache now."
 	@echo "To install database changes, run 'make install-dbchanges'."
 
@@ -685,3 +689,4 @@ reset-inspire-examples-searches:
 	echo "insert into collection_example (id_collection,id_example) select 7, example.id from example where example.type='Experiments';" | $(BINDIR)/dbexec
 	echo "insert into collection_example (id_collection,id_example) select 8, example.id from example where example.type='Journals';" | $(BINDIR)/dbexec
 	@echo ">>> Done reset-inspire-example-searches."
+

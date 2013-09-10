@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>URL</title>
+  <link rel="stylesheet" href="./submit_fzj.css" type="text/css" />
+  <noscript>JavaScript is currently disabled or not supported in your browser. However, this site REQUIRES JavaScript. Please enable it or use a browser that supports it. Thank you!</noscript>
+  <script src="/js/jquery/1.6.4/jquery-1.6.4.min.js"></script>
+  <script src="/js/jquery/ui-1.8.1/jquery.ui.core.js"></script>
+  <script src="/js/jquery/ui-1.8.1/jquery.ui.widget.js"></script>
+  <script src="/js/jquery/ui-1.8.1/jquery.ui.position.js"></script>
+  <script src="/js/jquery/ui-1.8.1/jquery.ui.autocomplete.js"></script>	 	   
+  <script src="/js/jquery/jquery-ui.min.js"></script>
+  <!-- JSON functions that some editions of IE don't know -->
+  <script src="/js/jquery/json2.js"></script>
+ 
+  <!-- HGF internal stuff -->
+  <script src="/js/jquery/hgfjsglobals.js"></script>
+  <script src="/js/jquery/jquery.tokeninput.js"></script>
+  <script src="/js/jquery/hgfauthor2id.js"></script>
+  <script src="/js/jquery/hgfGetURL.js"></script>
+  <script src="/js/jquery/hgfInstitutes.js"></script>
+  <script src="/js/jquery/hgfPubTypes.js"></script>
+  <script src="/js/jquery/hgfStatID.js"></script>
+   <script src="/js/jquery/hgfGrants.js"></script>
+  
+ 
+</head>
+
+<body>
+<fieldset id="submissionfields"><legend id="submissionlegend">URL Generator</legend>
+
+<!-- User input fields -->
+<span class="G">
+   <label for="I9201_l" class="L">Institute(s)</label>
+   <input name="hgf_9201_l" id="I9201_l" class="I"></input>
+</span>
+
+<span class="G">
+   <label for="I1001_a" class="L" >Author(s)</label>
+   <input name="hgf_1001_a" id="I1001_a" class="I" ></input>
+</span>
+
+<span class="G">
+  <label for="I3367_a" class="L">Publication Types</label>
+  <input name="hgf_I3367_a" id="I3367_a" class="I"></input>
+</span>
+
+<span class="G">
+   <label for="I915__a" class="L">StatID</label>
+   <input name="hgf_915__a" id="I915__a" class="I"></input>
+</span>
+
+
+<span class="G">
+   <label for="I536__a" class="L">Grant</label>
+   <input name="hgf_I536__a" id="I536__a" class="I"></input>
+</span>
+
+
+<!--span class="G">
+   <label for="I260__c" class="L">Publication Year</label>
+   <input name="hgf_I260__c" id="I260__c" class="I"></input>
+</span-->
+
+
+
+<!-- 
+Technical fields: we need to define some hidden fields that are
+required for initialisation and holding the structured data later on.
+-->
+
+<span class="G1001_ G100 G">
+  <input type="hidden" name="hgf_1001_" id="I1001_" value=""></input>
+</span>
+
+
+<span class="G7001_ G700 G">
+  <input type="hidden" name="hgf_7001_" id="I7001_" value=""></input>
+</span>
+
+<span class="G3367_ G336 G">
+  <input type="hidden" name="hgf_3367_" id="I3367_" value=""></input>
+</span>
+
+<span class="G915__ G915 G">
+  <input type="hidden" name="hgf_915__" id="I915__" value=""></input>
+</span>
+
+
+<span class="G9201_ G920 G">
+  <input type="hidden" name="hgf_9201_" id="I9201_" value=""></input>
+</span>
+
+<span class="G536__ G536 G">
+  <input type="hidden" name="hgf_536__" id="I536__" value=""></input>
+</span>
+
+
+
+<span class="G260__ G260 G">
+<input type="hidden" name="hgf_260__" id="I260__" value=""></input> 
+</span>
+
+
+</fieldset>
+
+<div align="left">
+<input type="button" class="adminbutton" name="endS1" width="400" height="50" value="Get URL" id="getURL">
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<name>JSSTAT</name>
+<description>JSON for database coverage authority records</description>
+{
+"label"     : "<BFE_FIELD tag='130__a'/> (<BFE_FIELD tag='035__a'/>)",
+"I915__2"   : "StatID",
+<BFE_FIELD prefix='"I915__0"   : "' suffix='",' tag='035__a'/>
+<BFE_FIELD prefix='"I915__a"   : "' suffix='"'  tag='130__a'/>
+},

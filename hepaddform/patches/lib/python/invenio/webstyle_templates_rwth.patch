@@ -1,0 +1,138 @@
+--- webstyle_templates.py	2012-06-26 10:53:30.000000000 +0200
++++ webstyle_templates_rwth.py	2012-07-05 15:57:55.000000000 +0200
+@@ -334,14 +334,20 @@
+  %(metaheaderadd)s
+ </head>
+ <body%(body_css_classes)s lang="%(ln_iso_639_a)s">
++<div class="wrapper">
+ <div class="pageheader">
++<noscript><p class="nojs">
++Your browser does not support JavaScript or JavaScript is disabled in the settings. &nbsp; - &nbsp; As this site requires some JavaScript, please make sure to enable it.
++</p></noscript>
+ %(inspect_templates_message)s
+ <!-- replaced page header -->
+ <div class="headerlogo">
+-<table class="headerbox" cellspacing="0">
++<table class="headerbox" cellspacing="0" cellpadding="0">
+  <tr>
+   <td align="right" valign="top" colspan="12">
+   <div class="userinfoboxbody">
++    
++    %(languagebox)s
+     %(userinfobox)s
+   </div>
+   <div class="headerboxbodylogo">
+@@ -350,30 +356,15 @@
+   </td>
+  </tr>
+  <tr class="menu">
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(search_selected)s">
+              <a class="header%(search_selected)s" href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a>
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(submit_selected)s">
+              <a class="header%(submit_selected)s" href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a>
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(personalize_selected)s">
+              %(useractivities)s
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(help_selected)s">
+              <a class="header%(help_selected)s" href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a>
+        </td>
+@@ -384,7 +375,7 @@
+  </tr>
+ </table>
+ </div>
+-<!--
++
+ <table class="navtrailbox">
+  <tr>
+   <td class="navtrailboxbody">
+@@ -392,7 +383,7 @@
+   </td>
+  </tr>
+ </table>
+--->
++
+ <!-- end replaced page header -->
+ %(pageheaderadd)s
+ </div>
+@@ -418,9 +409,9 @@
+           'userinfobox' : userinfobox,
+           'navtrailbox' : navtrailbox,
+           'useractivities': useractivities_menu,
+-          'adminactivities': adminactivities_menu and ('<td class="headermoduleboxbodyblank">&nbsp;</td><td class="headermoduleboxbody%(personalize_selected)s">%(adminactivities)s</td>' % \
++          'adminactivities': adminactivities_menu and ('<td class="headermoduleboxbody%(personalize_selected)s">%(adminactivities)s</td>' % \
+           {'personalize_selected': navmenuid.startswith('admin') and "selected" or "",
+-          'adminactivities': adminactivities_menu}) or '<td class="headermoduleboxbodyblank">&nbsp;</td>',
++          'adminactivities': adminactivities_menu}) or '',
+ 
+           'pageheaderadd' : pageheaderadd,
+           'body_css_classes' : body_css_classes and ' class="%s"' % ' '.join(body_css_classes) or '',
+@@ -471,21 +462,18 @@
+             msg_lastupdated = ""
+ 
+         out = """
++<div class="emptyFooter"></div>
++</div>
++
+ <div class="pagefooter">
+ %(pagefooteradd)s
+ <!-- replaced page footer -->
+- <div class="pagefooterstripeleft">
+-  %(sitename)s&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a>&nbsp;::&nbsp;<a class="footer" href="%(sitesecureurl)s/youraccount/display?ln=%(ln)s">%(msg_personalize)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a>
+-  <br />
+-  %(msg_poweredby)s <a class="footer" href="http://invenio-software.org/">Invenio</a> v%(version)s
+-  <br />
+-  %(msg_maintainedby)s <a class="footer" href="mailto:%(sitesupportemail)s">%(sitesupportemail)s</a>
+-  <br />
+-  %(msg_lastupdated)s
+- </div>
+- <div class="pagefooterstriperight">
+-  %(languagebox)s
+- </div>
++
++   
++    <p><a href="http://www.bth.rwth-aachen.de">Hochschulbibliothek RWTH Aachen University</a>
++     | Templergraben 61 | 52062 Aachen | Telefon: +49 241 80-94459 | Fax: +49 241 80-92273 </p>
++ 
++
+ <!-- replaced page footer -->
+ </div>
+ </body>
+@@ -540,7 +528,7 @@
+ 
+         for (lang, lang_namelong) in language_list_long():
+             if lang == language:
+-                parts.append('<span class="langinfo">%s</span>' % lang_namelong)
++                parts.append('<span class="userinfo">%s</span>' % lang_namelong)
+             else:
+                 # Update the 'ln' argument in the initial request
+                 argd['ln'] = lang
+@@ -550,10 +538,9 @@
+                     args = ""
+                 parts.append(create_html_link(args,
+                                               {}, lang_namelong,
+-                                              {'class': "langinfo"}))
++                                              {'class': "userinfo"}))
+         if len(parts) > 1:
+-            return _("This site is also available in the following languages:") + \
+-                 "<br />" + ' &nbsp;'.join(parts)
++            return ' &nbsp;'.join(parts) + '&nbsp;&nbsp; | &nbsp;'
+         else:
+             ## There is only one (or zero?) languages configured,
+             ## so there so need to display language alternatives.

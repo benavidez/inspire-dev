@@ -1,0 +1,5 @@
+<name>HBSTAT</name>
+<description>Brief format for StatID authorities</description>
+<BFE_RECORD_ID prefix='<a href="/record/' suffix='">'>
+<BFE_FIELD tag='130__a' prefix='<strong>' suffix="</strong></a>"/>
+<BFE_FIELD prefix='<font size="-2">[' suffix=']</font>' tag='035__a'/>

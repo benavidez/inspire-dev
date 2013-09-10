@@ -1,0 +1,12 @@
+<name>JSPERI</name>
+<description>JSON format for periodicals</description>
+{
+"label"     : "<BFE_TITLE/> (<BFE_FIELD tag="022__a" limit="1"/>)",
+<BFE_TITLE      prefix='"I773__t"   : "' suffix='",' />
+<BFE_IDNUMBER   prefix='"I773__0"   : "' suffix='",' src="ZDBID" tag="0247_" onlyfirst='yes' />
+<BFE_FIELD      prefix='"I773__x"   : "' suffix='",' tag="022__a"limit="1" />
+<BFE_FIELD      prefix='"I082__a"   : "' suffix='",' tag="082__a"limit="1" />
+<BFE_FIELD      prefix='"I260__a"   : "' suffix='",' tag="260__a"limit="1" />
+<BFE_FIELD      prefix='"I260__b"   : "' suffix='",' tag="260__b"limit="1" />
+<BFE_STATKEYSJS prefix='"I915__"    : "' suffix='"' />
+},

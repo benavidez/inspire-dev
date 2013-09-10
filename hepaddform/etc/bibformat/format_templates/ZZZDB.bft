@@ -1,0 +1,3 @@
+<name>ZZ ZDB</name>
+<description>Give ZDB identifier data for automatic matching</description>
+<BFE_RECORD_ID/>|<BFE_FIELD tag="035__$a"/>|<BFE_FIELD tag="245__$a"/><BFE_FIELD tag="245__$p" prefix=" "/><BFE_FIELD tag="245__$n" prefix=" "/>|<BFE_FIELD tag="022__$a"/>|<BFE_FIELD tag="0247_$a"/>|<BFE_StatKeysJS />|<BFE_FIELD tag="082__$a" limit="1"/>|<BFE_FIELD tag="260__$a" limit="1"/>|<BFE_FIELD tag="260__$b" limit="1"/>

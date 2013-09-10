@@ -1,0 +1,3 @@
+<name>JSGRANT</name>
+<description>Grant authorities in JSON</description>
+<BFE_GRANTSJS prefix="" suffix="," default="" escape="" />

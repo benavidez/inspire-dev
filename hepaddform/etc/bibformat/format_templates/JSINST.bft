@@ -1,0 +1,9 @@
+<name>JSINST</name>
+<description>JSON format for institute like entities</description>
+{
+"label"     : "<BFE_IDNUMBER subfield='w' src="d" tag="4101_" onlyfirst='no' printfield='a' suffix=': '/><BFE_FIELD tag='1101_a'/> <BFE_FIELD prefix="(established " suffix=")" tag="148"/>",
+<BFE_FIELD    prefix='"I9201_0"   : "' suffix='",' tag='035__a' />
+<BFE_FIELD    prefix='"I9201_l"   : "' suffix='",' tag='1101_a' />
+<BFE_IDNUMBER prefix='"I9201_k"   : "' suffix='",' tag='4101_' printfield='a' subfield='w' src="d" onlyfirst='no' />
+<BFE_FIELD    prefix='"I980__a"   : "' suffix='"'  tag='035__a' />
+},

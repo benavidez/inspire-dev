@@ -1,0 +1,155 @@
+--- webstyle_templates.py	2012-07-12 18:17:04.374537603 +0200
++++ webstyle_templates_gsi.py	2012-07-12 18:20:05.406602578 +0200
+@@ -334,6 +334,7 @@
+  %(metaheaderadd)s
+ </head>
+ <body%(body_css_classes)s lang="%(ln_iso_639_a)s">
++<div class="wrapper">
+ <div class="pageheader">
+ <noscript><p class="nojs">
+ Your browser does not support JavaScript or JavaScript is disabled in the settings. &nbsp; - &nbsp; As this site requires some JavaScript, please make sure to enable it.
+@@ -341,10 +342,12 @@
+ %(inspect_templates_message)s
+ <!-- replaced page header -->
+ <div class="headerlogo">
+-<table class="headerbox" cellspacing="0">
++<table class="headerbox" cellspacing="0" cellpadding="0">
+  <tr>
+   <td align="right" valign="top" colspan="12">
+   <div class="userinfoboxbody">
++    <a href="http://www.gsi.de/" class="userinfo">GSI Home</a>&nbsp;&nbsp; | &nbsp;
++    %(languagebox)s
+     %(userinfobox)s
+   </div>
+   <div class="headerboxbodylogo">
+@@ -353,30 +356,15 @@
+   </td>
+  </tr>
+  <tr class="menu">
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(search_selected)s">
+              <a class="header%(search_selected)s" href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a>
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(submit_selected)s">
+              <a class="header%(submit_selected)s" href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a>
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(personalize_selected)s">
+              %(useractivities)s
+        </td>
+-       <td class="headermoduleboxbodyblank">
+-             &nbsp;
+-       </td>
+        <td class="headermoduleboxbody%(help_selected)s">
+              <a class="header%(help_selected)s" href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a>
+        </td>
+@@ -419,9 +407,9 @@
+           'userinfobox' : userinfobox,
+           'navtrailbox' : navtrailbox,
+           'useractivities': useractivities_menu,
+-          'adminactivities': adminactivities_menu and ('<td class="headermoduleboxbodyblank">&nbsp;</td><td class="headermoduleboxbody%(personalize_selected)s">%(adminactivities)s</td>' % \
++          'adminactivities': adminactivities_menu and ('<td class="headermoduleboxbody%(personalize_selected)s">%(adminactivities)s</td>' % \
+           {'personalize_selected': navmenuid.startswith('admin') and "selected" or "",
+-          'adminactivities': adminactivities_menu}) or '<td class="headermoduleboxbodyblank">&nbsp;</td>',
++          'adminactivities': adminactivities_menu}) or '',
+ 
+           'pageheaderadd' : pageheaderadd,
+           'body_css_classes' : body_css_classes and ' class="%s"' % ' '.join(body_css_classes) or '',
+@@ -472,21 +460,53 @@
+             msg_lastupdated = ""
+ 
+         out = """
++<div class="emptyFooter"></div>
++</div>
++
+ <div class="pagefooter">
+ %(pagefooteradd)s
+ <!-- replaced page footer -->
+- <div class="pagefooterstripeleft">
+-  %(sitename)s&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a>&nbsp;::&nbsp;<a class="footer" href="%(sitesecureurl)s/youraccount/display?ln=%(ln)s">%(msg_personalize)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a>
+-  <br />
+-  %(msg_poweredby)s <a class="footer" href="http://invenio-software.org/">Invenio</a> v%(version)s
+-  <br />
+-  %(msg_maintainedby)s <a class="footer" href="mailto:%(sitesupportemail)s">%(sitesupportemail)s</a>
+-  <br />
+-  %(msg_lastupdated)s
+- </div>
+- <div class="pagefooterstriperight">
+-  %(languagebox)s
+- </div>
++
++<table class="GSIfootertab" border="0" >
++  <tr>
++    <!-- <td width="15px"> </td> -->
++    <td class="GSIfooterLeft" align="left" valign="top">
++      <table style="border-collapse:collapse;" border="0";>
++        <tr>
++          <td class="GSIfooterinline">
++            <a href="%(siteurl)s/?ln=%(ln)s">GSI Institutional Repository:</a></td>
++          <td class="GSIfooterinline">
++            <a href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a></td>
++          <td class="GSIfooterinline">
++            <a href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a></td>
++          <td class="GSIfooterinline">
++            <a href="%(sitesecureurl)s/youraccount/display?ln=%(ln)s">%(msg_personalize)s</a></td>
++          <td class="GSIfooterinlinelast">
++            <a href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a></td></tr>
++      </table>
++      <table style="border-collapse:collapse; margin-top:8px;" border="0";>
++        <tr>
++           <td class="GSIfooterinline2">
++            %(msg_poweredby)s <a href="http://invenio-software.org/" target="_blank">Invenio</a></td>
++           <td class="GSIfooterinline2">Contact: <a href="mailto:%(sitesupportemail)s">%(sitesupportemail)s</a></td>
++           <td class="GSIfooterinlinelast">%(msg_lastupdated)s</td>
++        </tr>
++      </table>
++
++      <p class="GSIfooterp" style="margin-top:25px"><a href="http://www.gsi.de/">GSI Helmholtzzentrum
++          f&uuml;r Schwerionenforschung GmbH</a>
++        | Planckstr. 1 | 64291 Darmstadt | Telefon: +49-6159-71- 0</p>
++      <p class="GSIfooterp"><a href="http://www.gsi.de/disclaimer.html">&copy;
++          Imprint, Copyright Notice and Disclaimer (in German
++          language)</a></p>
++    </td>
++    <td width="25px"> </td>
++    <td class="GSIfooterRight" align="left" valign="top">
++      <a href="http://www.helmholtz.de/" target="_blank">http://www.helmholtz.de/</a>
++      </td>
++  </tr>
++</table>
++
+ <!-- replaced page footer -->
+ </div>
+ </body>
+@@ -541,7 +561,7 @@
+ 
+         for (lang, lang_namelong) in language_list_long():
+             if lang == language:
+-                parts.append('<span class="langinfo">%s</span>' % lang_namelong)
++                parts.append('<span class="userinfo">%s</span>' % lang_namelong)
+             else:
+                 # Update the 'ln' argument in the initial request
+                 argd['ln'] = lang
+@@ -551,10 +571,9 @@
+                     args = ""
+                 parts.append(create_html_link(args,
+                                               {}, lang_namelong,
+-                                              {'class': "langinfo"}))
++                                              {'class': "userinfo"}))
+         if len(parts) > 1:
+-            return _("This site is also available in the following languages:") + \
+-                 "<br />" + ' &nbsp;'.join(parts)
++            return ' &nbsp;'.join(parts) + '&nbsp;&nbsp; | &nbsp;'
+         else:
+             ## There is only one (or zero?) languages configured,
+             ## so there so need to display language alternatives.

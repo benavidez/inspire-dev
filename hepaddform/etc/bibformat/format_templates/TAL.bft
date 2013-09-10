@@ -1,0 +1,3 @@
+<name>TAL</name>
+<description>Text list of all authors of a paper including their local ID number (if any)</description>
+<BFE_AUTHORIDLIST />

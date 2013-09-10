@@ -1,0 +1,9 @@
+<name>HDSTAT</name>
+<description>Detailed format for StatID authorities</description>
+<div style="padding-left:10px;padding-right:10px">
+<h2><BFE_FIELD tag='130__a'/></h2>
+
+<table width="80%">
+<BFE_FIELD prefix='<tr><td>ID</td><td>' suffix='</td></tr>' tag='035__a'/>
+</table>
+</div>

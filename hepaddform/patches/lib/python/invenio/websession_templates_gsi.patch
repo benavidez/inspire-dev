@@ -1,0 +1,11 @@
+--- websession_templates.py	2011-07-06 14:29:08.000000000 +0200
++++ websession_templates_gsi.py	2011-07-06 14:29:08.000000000 +0200
+@@ -1166,7 +1166,7 @@
+         # load the right message language
+         _ = gettext_set_language(ln)
+ 
+-        out = """<img src="%s/img/user-icon-1-20x20.gif" border="0" alt=""/> """ % CFG_SITE_URL
++        out = """"""
+         if guest:
+             out += """%(guest_msg)s ::
+                    <a class="userinfo" href="%(sitesecureurl)s/youraccount/login?ln=%(ln)s%(referer)s">%(login)s</a>""" % {

@@ -1,0 +1,84 @@
+<name>Journal Record</name>
+<description>Detailed display for journal records</description>
+<BFE_TOPBANNER
+prefix='<div style="padding-left:10px;padding-right:10px">'
+suffix='</div><hr/>'/>
+
+<div style="padding-left:10px;padding-right:10px">
+<table>
+<tr>
+<td rowspan='2'>
+<BFE_JOURNALCOVER />
+</td>
+<td><BFE_TITLE prefix="<center><big><big><strong>" separator="<br /><br />" suffix="</strong></big></big></center>" />
+<p align="center">
+</td>
+</tr>
+<tr>
+<td>
+<small><strong>Common abbreviations:</br></strong>
+<BFE_IDNUMBER_SRC tag='2100#' separator='<br/>' onlyfirst='no'/></small>
+</td>
+</tr>
+</table>
+</p>
+
+<p>
+
+<!-- subject indexing of this journal -->
+<BFE_FIELD tag="082__$a"
+prefix="<br /><small><strong>DDC: </strong></small>"
+instances_separator=", "
+ />
+<BFE_FIELD tag="650_7$a"
+prefix="<br /><small><strong>Keywords(s): </strong><i>"
+instances_separator=", "
+suffix="</i></small>"
+ />
+
+<!-- publisher iformation -->
+<BFE_CODEN 
+prefix="<br /><small><strong>CODEN: </strong>"
+suffix="</small>"
+/>
+
+<BFE_FIELD tag="022__$a"
+prefix="<br /><small><strong>ISSN(s): </strong>"
+instances_separator=" ; "
+suffix="</small>"
+ />
+
+<bfe_imprint separator="" place_label=" : " prefix="<br/><small><strong>Publisher:</strong>" suffix="</small>"/>
+
+</p>
+
+<BFE_SFX />
+
+<p>
+<!-- Generate RSS Feed links -->
+<BFE_RSSTOC />
+</p>
+
+<p>
+<BFE_FIELD tag="913__$b"
+prefix="<br /><small><strong>DB Coverage: </strong>"
+instances_separator=" ; "
+suffix="</small>"
+/>
+</p>
+<p>
+<small><BFE_JCRLINK /></small>
+</p>
+
+<bfe_statid prefix="<small><strong>Database coverage:</strong></small><br>" />
+</div>
+
+<!--
+<p>
+<BFE_FIELD tag="936__$a"
+prefix="<br /><small><strong>Note: </strong>"
+suffix="</small>"
+/>
+</p>
+-->
+

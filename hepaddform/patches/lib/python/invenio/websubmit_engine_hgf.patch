@@ -1,0 +1,14 @@
+--- websubmit_engine.py	2012-07-12 08:08:27.000000000 +0200
++++ websubmit_engine_hgf.py	2012-07-12 08:33:50.000000000 +0200
+@@ -548,7 +548,10 @@
+             fieldhtml.append(text)
+         else:
+             select.append(0)
+-            radio.append(0)
++            if re.search(r"TYPE=[\"']?radio", field_instance[4], re.IGNORECASE) is not None:
++                radio.append(1)
++            else:
++                radio.append(0)
+             upload.append(0)
+             # field.append(value) - initial version, not working with JS, taking a submitted value
+             field.append(field_instance[3])

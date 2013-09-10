@@ -1,0 +1,131 @@
+#!/bin/sh
+#
+# These instructions assume that all dependencies of Invenio are 
+# already installed and exist in proper versions. 
+
+#----------------------------------------------------------------------
+# Global configs
+#----------------------------------------------------------------------
+# Canonical paths:
+### instance may be gsi fzj rwth desy, cern
+### CERN should configure the following variables!!!!
+export admin=admin
+export instance=inspire
+export gitdir=/home/eduardo/src
+export inveniopath=/opt/invenio
+export wwwusr=apache
+
+
+suInstallJqueryPlugins()
+{
+  # External modules
+  # -> As URLs change run these makes against a Makefile from
+        # git clone http://invenio-software.org/repo/invenio
+  # (== master/head) which should contain correct URLs
+
+  # REQUIRED:
+        cd $gitdir/invenio-inspire-ops
+        sudo make install-jquery-plugins
+        sudo make install-mathjax-plugin
+        sudo make install-fckeditor-plugin
+        sudo make install-pdfa-helper-files
+
+        sudo chown -R $wwwusr.$wwwusr $inveniopath
+}
+#----------------------------------------------------------------------
+# Everything is build now install it. This needs root privileges
+# All the following has to be done wiht root privileges
+#----------------------------------------------------------------------
+
+
+hgfconfigure()
+{
+        # Delete submitmasks that might exist from an earlier install
+    # Doing it here as well ensures that we have the old config if 
+        # we install over an old installation
+    #cd $inveniopath/etc/websubmit/
+    #sudo -u $wwwusr python $inveniopath/etc/websubmit/process_confobj.py -d $inveniopath/etc/websubmit/config.cfg
+
+
+    cd $gitdir/inspire/hepaddform
+    pwd
+    # Copies anything in $gitdir/inspire/hepaddform/ to $inveniopath
+    # except the subdir $gitdir/inspire/hepaddform/patches
+    for f in $gitdir/inspire/hepaddform/*
+    do
+        if [ "$f" = "$gitdir/inspire/hepaddform/patches" ]; then
+            continue
+        fi
+        echo $f
+        sudo -u $wwwusr cp -r $f $inveniopath
+    done
+    cd $inveniopath
+}
+
+
+#----------------------------------------------------------------------
+# Set definitions for output formats
+#----------------------------------------------------------------------
+SetOutputFormatDefs()
+{
+    cd $inveniopath
+    sudo -u $wwwusr $inveniopath/bin/contrib/SetOutputFormatAttributes.py
+}
+
+#----------------------------------------------------------------------
+# Create collections required for this system. The collections created
+# are defined in $inveniopath/bin/contrib/Collectionlist.txt
+#----------------------------------------------------------------------
+CreateCollections()
+{
+    cd $inveniopath/bin/contrib
+    sudo -u $wwwusr python $inveniopath/bin/contrib/CreateCollections.py
+}
+
+#----------------------------------------------------------------------
+# Create submission and modification forms for hgf-institutes
+#----------------------------------------------------------------------
+CreateSubmitMasks()
+{
+    cd $inveniopath/etc/websubmit/
+    sudo -u $wwwusr python $inveniopath/etc/websubmit/process_confobj.py -d $inveniopath/etc/websubmit/config.cfg
+    sudo -u $wwwusr python $inveniopath/etc/websubmit/process_confobj.py -c $inveniopath/etc/websubmit/config.cfg
+}
+
+#----------------------------------------------------------------------
+# Setup OAI sets and harvesting of all partners
+#----------------------------------------------------------------------
+SetupOAIConfig()
+{
+    cd $inveniopath/bin/contrib
+    sudo -u $wwwusr python $inveniopath/bin/contrib/SetupOAI.py
+    cd $inveniopath/bin
+    ## # start OAI repository update once ASAP...
+    ## sudo -u $wwwusr ./oairepositoryupdater -u $admin
+    ## # ... and periodically once a day
+    ## sudo -u $wwwusr ./oairepositoryupdater -u $admin -s24
+    ## # Enable harvesting as well
+    ## sudo -u $wwwusr ./oaiharvest -u $admin -s24
+}
+
+echo "=================================================="
+echo "==  Please copy and configure me by an editor!  =="
+echo "=================================================="
+
+
+#### INSTALL Scripts #####
+#Please comment in to install HGF functionalities 
+
+#checkout    #--- Step1: clone hgf-invenio
+#gitpull     #--- Step2: pull hgf-invenio
+suInstallJqueryPlugins   #--- Step3: install jquery plugins (optional)
+hgfconfigure   #--- Step4: copy all files from hgf-invenio into invenio-installation (no core invenio files are overwritten)
+
+
+# Step5: Set the variable CFG_WEBSTYLE_TEMPLATE_SKIN=cern in invenio-local.conf and start inveniocfg --update-all. The next steps need this variable to be set. Ensure that all the files copied during hgfconfigure belong to wwwuser
+
+
+SetOutputFormatDefs   #--- Step6: add new output formats
+              #SetupOAIConfig   #--- Step7: setup the OAI configutration (optional)
+CreateSubmitMasks   #--- Step8: Create submission forms 
+              #CreateCollections   #--- Step9: Create collections to be known to the system

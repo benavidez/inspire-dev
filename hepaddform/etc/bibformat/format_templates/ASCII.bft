@@ -1,0 +1,8 @@
+<name>Text list</name>
+<description>Plain text list</description>
+<bfe_typelist/>
+<BFE_AUTHORS_HGF print_links="no" separator=" ; " print_affiliations="no" highlight="no" interactive="no" role_prefix='(' role_suffix=')'/>
+<BFE_TITLE highlight="no" separator=" "/>
+<BFE_JOURNALREFERENCE highlight='no'/>
+<BFE_RECORD_URL />
+

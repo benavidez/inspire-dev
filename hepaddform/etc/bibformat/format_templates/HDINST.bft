@@ -1,0 +1,15 @@
+<name>HDINST</name>
+<description>HTML Detailed for Institutes</description>
+<div style="padding-left:10px;padding-right:10px">
+<h2><BFE_FIELD tag='1101_a'/> <BFE_IDNUMBER prefix='(' suffix=')' subfield='w' src="d" tag="4101_" onlyfirst='no' printfield='a' /></h2>
+
+<table width="80%">
+<tr>
+<BFE_FIELD prefix='<td>ID</td><td>' suffix='</td>' tag='035__a'/>
+</tr>
+</table>
+
+<BFE_AUTHLINKING prefix='<p>' suffix='</p>' tag='5101_' />
+
+<BFE_PUBLIST prefix="<h3>Recent Publications</h3>" src='980__a'/>
+</div>

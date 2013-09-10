@@ -1,0 +1,84 @@
+--- webstyle_templates_hgf.py	2012-07-12 10:05:43.000000000 +0200
++++ webstyle_templates_desy.py	2012-07-12 10:18:03.000000000 +0200
+@@ -350,6 +350,34 @@
+   <div class="headerboxbodylogo">
+    <a href="%(siteurl)s?ln=%(ln)s">%(sitename)s</a>
+   </div>
++  <div><map name="map_e84929" id="map_e84929">
++<area id="area_imageareas84932" shape="poly" 
++ coords="7,7,100,9,100,20,7,22" 
++ href="http://www.desy.de/research/research_areas/accelerators/index_eng.html"
++ target="_self"
++ alt="Accelerators >>>"
++ title="Accelerators >>>"
++/>
++<area id="area_imageareas84933" shape="poly" 
++ coords="103,9,204,8,204,22,104,19" 
++ href="http://www.desy.de/research/research_areas/photon_science/index_eng.html"
++ target="_self"
++ alt="Photon Science >>>"
++ title="Photon Science >>>"
++/>
++<area id="area_imageareas84934" shape="poly" 
++ coords="207,8,313,9,312,21,207,20" 
++ href="http://www.desy.de/research/research_areas/particle_physics/index_eng.html"
++ target="_self"
++ alt="Particle Physics >>>"
++ title="Particle Physics >>>"
++/>
++</map>
++
++<img src="/img/global-navi.gif" 
++id="e84929"
++usemap="#map_e84929"
++border="0"></div>
+   </td>
+  </tr>
+  <tr class="menu">
+@@ -476,44 +504,17 @@
+ %(pagefooteradd)s
+ <!-- replaced page footer -->
+  <div class="pagefooterstripeleft">
+-  %(sitename)s&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/?ln=%(ln)s">%(msg_search)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/submit?ln=%(ln)s">%(msg_submit)s</a>&nbsp;::&nbsp;<a class="footer" href="%(sitesecureurl)s/youraccount/display?ln=%(ln)s">%(msg_personalize)s</a>&nbsp;::&nbsp;<a class="footer" href="%(siteurl)s/help/%(langlink)s">%(msg_help)s</a>
+-  <br />
+-  %(msg_poweredby)s <a class="footer" href="http://invenio-software.org/">Invenio</a> v%(version)s
+-  <br />
+-  %(msg_maintainedby)s <a class="footer" href="mailto:%(sitesupportemail)s">%(sitesupportemail)s</a>
+-  <br />
+-  %(msg_lastupdated)s
+  </div>
+  <div class="pagefooterstriperight">
+-  %(languagebox)s
++  <a class="footer" href="mailto:Tomasz.Pazera@desy.de">Contact</a> | <a class="footer" href="http://www.desy.de/imprint/index_eng.html">Imprint</a>
++ <br />Deutsches Elektronen-Synchrotron
+  </div>
+ <!-- replaced page footer -->
+ </div>
+ </body>
+ </html>
+         """ % {
+-          'siteurl' : CFG_SITE_URL,
+-          'sitesecureurl' : CFG_SITE_SECURE_URL,
+-          'ln' : ln,
+-          'langlink': '?ln=' + ln,
+-
+-          'sitename' : CFG_SITE_NAME_INTL.get(ln, CFG_SITE_NAME),
+-          'sitesupportemail' : CFG_SITE_SUPPORT_EMAIL,
+-
+-          'msg_search' : _("Search"),
+-          'msg_submit' : _("Submit"),
+-          'msg_personalize' : _("Personalize"),
+-          'msg_help' : _("Help"),
+-
+-          'msg_poweredby' : _("Powered by"),
+-          'msg_maintainedby' : _("Maintained by"),
+-
+-          'msg_lastupdated' : msg_lastupdated,
+-          'languagebox' : self.tmpl_language_selection_box(req, ln),
+-          'version' : CFG_VERSION,
+-
+           'pagefooteradd' : pagefooteradd,
+-
+         }
+         return out
+ 

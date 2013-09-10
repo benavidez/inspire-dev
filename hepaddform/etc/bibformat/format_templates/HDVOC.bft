@@ -1,0 +1,14 @@
+<name>HDVOC</name>
+<description>Details for a vocabulary authority</description>
+<div style="padding-left:10px;padding-right:10px">
+<BFE_FIELD prefix='<h2>' suffix='</h2>' tag='150__a'/>
+
+<p>
+<BFE_FIELD    tag='680__i' />
+<BFE_FIELD prefix='<i>' suffix='</i>' tag='680__a' />
+</p>
+
+<BFE_AUTHLINKING prefix='<p>' suffix='</p>' tag='550__' />
+
+</div>
+

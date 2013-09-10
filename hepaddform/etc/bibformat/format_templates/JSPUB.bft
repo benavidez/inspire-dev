@@ -1,0 +1,10 @@
+<name>JSPUB</name>
+<description>Publication type authorities in JSON</description>
+{
+"I3367_" : <BFE_DOCTYPES prefix='' suffix=',' default="" escape="" />
+<BFE_IDNUMBER prefix='"I502__a" : "'  suffix='",' subfield='i' src="HSV" tag="455__" onlyfirst='no' printfield='a'/>
+<BFE_IDNUMBER prefix='"I502__b" : "'  suffix='",' subfield='w' src="d" tag="455__" onlyfirst='no' printfield='a'/>
+<BFE_FIELD    prefix='"I650_7a" : "'  suffix='",' tag="750_7a" />
+<BFE_FIELD    prefix='"I650_72" : "'  suffix='",' tag="750_72" />
+<BFE_FIELD    prefix='"I650_70" : "'  suffix='",' tag="750_70" />
+},

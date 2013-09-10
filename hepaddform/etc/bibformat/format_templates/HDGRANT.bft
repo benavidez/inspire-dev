@@ -1,0 +1,25 @@
+<name>HDGRANT</name>
+<description>Details for a grant authority</description>
+<div style="padding-left:10px;padding-right:10px">
+<BFE_IDNUMBER prefix='<p>' suffix='</p>' subfield='w' src="d" tag="450__" onlyfirst='no' printfield='a' />
+<BFE_FIELD prefix='<h2>' suffix='</h2>' tag='150__a'/>
+
+<p>
+<table border='0' cellspacing='10'>
+<BFE_FIELD    tag='371__a' prefix='<tr><td><i>Coordinator</i></td><td>' suffix='</td></tr>'/>
+<BFE_FIELD    tag='150__y' prefix='<tr><td><i>Grant period</i></td><td>' suffix='</td></tr>'/>
+<BFE_FIELD    tag='5101_a' prefix='<tr><td><i>Funding body</i></td><td>' suffix='</td></tr>'/>
+<BFE_FIELD    tag='5101_b' prefix='<tr><td>&nbsp;</td><td>' suffix='</td></tr>'/>
+<BFE_IDNUMBER tag="0247_"  printfield='d' prefix='<tr><td><i>Call number</i></td><td>'  suffix='</td></tr>' subfield='a' src='Call'  onlyfirst='no'  />
+<BFE_IDNUMBER tag="0247_"  printfield='d' prefix='<tr><td><i>Grant number</i></td><td>' suffix='</td></tr>' subfield='a' src='Grant' onlyfirst='no' />
+<BFE_field    tag="035__a" prefix='<tr><td><i>Identifier</i></td><td>' suffix='</td></tr>'/>
+<bfe_url_hgf  prefix="<tr><td><i>Further information: </i></td><td>" suffix='</td></tr>'/>
+</table>
+<bfe_url_hgf prefix="Further information: "/>
+</p>
+
+<BFE_AUTHLINKING prefix='<p>' suffix='</p>' tag='550__' />
+
+<BFE_PUBLIST prefix="<h3>Recent Publications</h3>" src='536__0'/>
+</div>
+

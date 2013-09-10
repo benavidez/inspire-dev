@@ -1,0 +1,12 @@
+--- webstyle_templates.py	2012-07-04 08:44:45.454602519 +0200
++++ webstyle_templates_hgf.py	2012-07-04 13:05:08.506911031 +0200
+@@ -335,6 +335,9 @@
+ </head>
+ <body%(body_css_classes)s lang="%(ln_iso_639_a)s">
+ <div class="pageheader">
++<noscript><p class="nojs">
++Your browser does not support JavaScript or JavaScript is disabled in the settings. &nbsp; - &nbsp; As this site requires some JavaScript, please make sure to enable it.
++</p></noscript>
+ %(inspect_templates_message)s
+ <!-- replaced page header -->
+ <div class="headerlogo">

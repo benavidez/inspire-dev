@@ -1,0 +1,3 @@
+<name>ZZ VDB</name>
+<description>Give VDB data for automatic ZDB matching</description>
+<BFE_RECORD_ID/>|<BFE_FIELD tag="970__$a"/>|<BFE_FIELD tag="440_0$x"/>|<BFE_FIELD tag="440_0$0"/>|<BFE_FIELD tag="440_0$a"/>|<BFE_FIELD tag="440_0$v"/>|<BFE_FIELD tag="440_0$y"/>|<BFE_FIELD tag="0247_" subfields_separator="=" instances_separator="_:_"/>|<BFE_AUTHORS limit="" print_links="no" separator=" ; " print_affiliations="no" highlight="no" interactive="no"/>|<BFE_FIELD tag="260__$c"/>|
