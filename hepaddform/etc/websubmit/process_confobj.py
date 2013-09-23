@@ -20,6 +20,7 @@ from invenio.websubmitadmin_dblayer import *
 from configobj import ConfigObj             #module for reading config-file
 from invenio.config import * #(local-conf)
 import os, sys, re
+from invenio.access_control_admin import acc_add_authorization as auth
 
 ##### Arguments and correct syntax ###
 def check_args():
@@ -344,6 +345,14 @@ def delete_name_from_collectionname(name):
 
 ################### help functions #########################
 
+def  add_hepaddform_authentication_rule(doctype):
+    """ Add authorization to submit the hepaddform for any user """
+
+    if doctype == "journal":
+        key = {'doctype': 'journal', 'act': 'SBI', 'categ': 'journal'}
+        auth_status = auth(name_role='anyuser', name_action='submit', optional=0, **key)
+        print 'Added authorization for hepaddform'
+
 def replace_null(a):
     if a == "NULL": return ""
     else: return a
@@ -481,7 +490,7 @@ def build_or_remove_schema(config):
                 max_child_score = get_maximum_catalogue_score_of_doctype_children_of_submission_collection(collection_id)
                 ## add it to the new doctype, at a higher score than the others have:
                 new_score = max_child_score + 1
-                insert_doctype_child_for_submission_collection(collection_id, doctype, new_score) #sbmCOLLECTION_sbmDOCTYPE
+                (collection_id, doctype, new_score) #sbmCOLLECTION_sbmDOCTYPE
             elif arg == "-d": delete_doctype_children_from_submission_collection(collection_id) #sbmCOLLECTION_sbmDOCTYPE
 
 
@@ -637,6 +646,8 @@ def build_or_remove_doctypes(config,inst):
 
         ## create institutes defined fields
         create_mask(config, doctype, inst)
+
+        add_hepaddform_authentication_rule(doctype)
 
 def create_user_defined_fielddesc(sbmfield,field,config):
     """create institutional defined fielddescriptor
