@@ -11,8 +11,8 @@
 ### CERN should configure the following variables!!!!
 export admin=admin
 export instance=inspire
-export gitdir=/home/eduardo/src
-export inveniopath=/opt/invenio
+export gitdir=/u1/src
+export inveniopath=/u1/invenio
 export wwwusr=apache
 
 
