@@ -1,0 +1,17 @@
+#!/bin/sh
+# Perl Module Installation
+#
+echo "Installing Perl modules..."
+curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+cpanm YAML
+cpanm XML::XPath
+cpanm SOAP::Lite
+cpanm DBD::SQLite
+cpanm Config::Simple
+cpanm String::Escape
+cpanm JSON
+cpanm CGI
+cpanm IO::Scalar
+cpanm Term::ReadKey
+cpanm LWP::Protocol::https
+echo "Done!"

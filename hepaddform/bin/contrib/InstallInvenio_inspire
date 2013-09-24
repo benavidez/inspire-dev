@@ -11,8 +11,8 @@
 ### CERN should configure the following variables!!!!
 export admin=admin
 export instance=inspire
-export gitdir=/u1/src
-export inveniopath=/u1/invenio
+export gitdir=/home/eduardo/src
+export inveniopath=/opt/invenio
 export wwwusr=apache
 
 
@@ -108,6 +108,16 @@ SetupOAIConfig()
     ## sudo -u $wwwusr ./oaiharvest -u $admin -s24
 }
 
+
+#----------------------------------------------------------------------
+# Run script to install Perl modules
+#----------------------------------------------------------------------
+install_perl_modules()
+{
+    $gitdir/inspire/hepaddform/bin/contrib/requirements-perl
+
+}
+
 echo "=================================================="
 echo "==  Please copy and configure me by an editor!  =="
 echo "=================================================="
@@ -115,6 +125,8 @@ echo "=================================================="
 
 #### INSTALL Scripts #####
 #Please comment in to install HGF functionalities 
+
+
 
 suInstallJqueryPlugins   #--- Step3: install jquery plugins (optional)
 
@@ -126,3 +138,5 @@ SetOutputFormatDefs      #--- Step6: add new output formats
                          #SetupOAIConfig   #--- Step7: setup the OAI configutration (optional)
 CreateSubmitMasks        #--- Step8: Create submission forms 
                          #CreateCollections   #--- Step9: Create collections to be known to the system
+
+install_perl_modules

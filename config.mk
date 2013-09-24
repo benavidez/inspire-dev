@@ -3,7 +3,7 @@
 # in your top level directory
 #
 
-PREFIX = /u1/invenio
+PREFIX = /opt/invenio
 
 BINDIR = $(PREFIX)/bin
 ETCDIR = $(PREFIX)/etc

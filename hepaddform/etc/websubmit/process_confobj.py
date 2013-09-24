@@ -490,7 +490,7 @@ def build_or_remove_schema(config):
                 max_child_score = get_maximum_catalogue_score_of_doctype_children_of_submission_collection(collection_id)
                 ## add it to the new doctype, at a higher score than the others have:
                 new_score = max_child_score + 1
-                (collection_id, doctype, new_score) #sbmCOLLECTION_sbmDOCTYPE
+                insert_doctype_child_for_submission_collection(collection_id, doctype, new_score) #sbmCOLLECTION_sbmDOCTYPE
             elif arg == "-d": delete_doctype_children_from_submission_collection(collection_id) #sbmCOLLECTION_sbmDOCTYPE
 
 
@@ -963,7 +963,7 @@ def process_all():
         build_or_remove_doctypes(config, inst) #create/delete doctypes
         build_or_remove_schema(config) #create/delete collections for submit form
         generate_css(fieldlabels) #create css_file
-        #webcollection(config)
+        webcollection(config)
     else: pass
 
 if __name__ == "__main__":
