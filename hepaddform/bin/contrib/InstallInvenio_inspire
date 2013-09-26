@@ -114,7 +114,7 @@ SetupOAIConfig()
 #----------------------------------------------------------------------
 install_perl_modules()
 {
-    $gitdir/inspire/hepaddform/bin/contrib/requirements-perl
+    sudo $gitdir/inspire/hepaddform/bin/contrib/requirements.pl
 
 }
 
