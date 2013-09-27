@@ -38,8 +38,8 @@ use locale;
 use Encode;
 use Sys::Hostname;
 
-use arwagner::arwagner;
-use arwagner::MarcXML;
+use HGF::Forms::HGF;
+use HGF::Forms::MarcXML;
 
 my $format = "Marc";
 

@@ -42,8 +42,8 @@ use IO::Handle;
 use locale;
 use Encode;
 
-use arwagner::crossref;
-use arwagner::arwagner;
+use HGF::Forms::crossref;
+use HGF::Forms::HGF;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 
@@ -107,8 +107,8 @@ sub Fetch ($) {
 		$record{abstract} =~ s/\n/ /g;
 		$record{title}    =~ s/\s{1,}/ /g;
 		$record{abstract} =~ s/\s{1,}/ /g;
-		$record{title}    = arwagner::trim($record{title});
-		$record{abstract} = arwagner::trim($record{abstract});
+		$record{title}    = HGF::Forms::trim($record{title});
+		$record{abstract} = HGF::Forms::trim($record{abstract});
 
 
     $subnodes = $node->find('authors/author');

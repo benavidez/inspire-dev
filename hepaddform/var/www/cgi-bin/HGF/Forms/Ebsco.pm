@@ -67,7 +67,7 @@ use LWP::UserAgent;
 use XML::XPath;
 use Encode;
 use IO::Handle;
-use arwagner::arwagner;
+use HGF::Forms::HGF;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 

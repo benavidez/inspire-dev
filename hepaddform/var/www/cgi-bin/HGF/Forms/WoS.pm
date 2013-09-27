@@ -41,7 +41,7 @@ use DBI;
 use XML::XPath;
 use Encode;
 use IO::Handle;
-use arwagner::arwagner;
+use HGF::Forms::HGF;
 use FindBin;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
@@ -320,7 +320,7 @@ sub SearchRetrieve($$$$$$$$) {
   # fetcher. 
   # TODO all this is ugly 
   my $path = $FindBin::Bin;
-  my $res = `/usr/bin/env python $path/arwagner/wosfetch.py '$query'`;
+  my $res = `/usr/bin/env python $path/HGF/Forms/wosfetch.py '$query'`;
 	return($res);
 }
 

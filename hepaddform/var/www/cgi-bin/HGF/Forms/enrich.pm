@@ -35,10 +35,10 @@ use Exporter;
 use vars qw($VERSION @ISA @EXPORT);
 $VERSION = "0.01";
 
-use arwagner::crossref;
-use arwagner::WoS;
-use arwagner::pubmed;
-use arwagner::Ebsco;
+use HGF::Forms::crossref;
+use HGF::Forms::WoS;
+use HGF::Forms::pubmed;
+use HGF::Forms::Ebsco;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 

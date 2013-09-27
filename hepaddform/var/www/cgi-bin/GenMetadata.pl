@@ -54,16 +54,16 @@ use Sys::Hostname;
 use Data::Dumper;
 
 # Some local stuff
-use arwagner::arwagner;
-use arwagner::CGIHelper;
-use arwagner::MarcXML;
-use arwagner::arXiv;
-use arwagner::crossref;
-use arwagner::Ebsco;
-use arwagner::GVK;
-use arwagner::pubmed;
-use arwagner::WoS;
-use arwagner::inspire;
+use HGF::Forms::HGF;
+use HGF::Forms::CGIHelper;
+use HGF::Forms::MarcXML;
+use HGF::Forms::arXiv;
+use HGF::Forms::crossref;
+use HGF::Forms::Ebsco;
+use HGF::Forms::GVK;
+use HGF::Forms::pubmed;
+use HGF::Forms::WoS;
+use HGF::Forms::inspire;
 
 use CGI qw(-utf8);
 ### use CGI qw/ -oldstyle_urls/;

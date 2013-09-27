@@ -43,12 +43,12 @@ use IO::Handle;
 use LWP::UserAgent;
 use Sys::Hostname;
 
-use arwagner::crossref;
-use arwagner::pubmed;
-use arwagner::Ebsco;
-use arwagner::WoS;
-use arwagner::CGIHelper;
-use arwagner::GVK;
+use HGF::Forms::crossref;
+use HGF::Forms::pubmed;
+use HGF::Forms::Ebsco;
+use HGF::Forms::WoS;
+use HGF::Forms::CGIHelper;
+use HGF::Forms::GVK;
 
 use CGI;
 ### use CGI qw/ -oldstyle_urls/;

@@ -37,11 +37,11 @@ $VERSION = "0.01";
 use LWP::UserAgent;
 use XML::XPath;
 use IO::Handle;
-use arwagner::arwagner;
+use HGF::Forms::HGF;
 use locale;
 use Encode;
 
-use arwagner::arwagner;
+use HGF::Forms::HGF;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 
@@ -152,7 +152,7 @@ sub CrossRefXML2record($) {
 			 # Strip them of to get a more readable result.
 			 $record{"title"} =~ s/\n\r?/ /g;
 			 $record{"title"} =~ s/ {1,}/ /g;
-			 $record{"title"} = arwagner::trim($record{"title"});
+			 $record{"title"} = HGF::Forms::trim($record{"title"});
 			 $record{"bpage"}       = "" . $node->findvalue('journal_article/pages/first_page');
 			 $record{"epage"}       = "" . $node->findvalue('journal_article/pages/last_page');
 			 $record{"pages"}        = $record{bpage} . " - " . $record{"epage"};
@@ -289,7 +289,7 @@ sub CrossRefXML2record($) {
 		 }
 	}
   for my $k (keys(%record)) {
-    $record{$k} = arwagner::trim($record{$k});
+    $record{$k} = HGF::Forms::trim($record{$k});
   }
 	return(%record)
 }

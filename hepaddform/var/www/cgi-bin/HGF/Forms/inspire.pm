@@ -41,8 +41,8 @@ use IO::Handle;
 use locale;
 use Encode;
 
-use arwagner::crossref;
-use arwagner::arwagner;
+use HGF::Forms::crossref;
+use HGF::Forms::HGF;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 
@@ -103,11 +103,11 @@ sub Fetch ($) {
 	$record{title}      = $xp->findvalue('/collection/record/datafield[@tag="245"]')->string_value;
 	$record{abstract}   = $xp->findvalue('/collection/record/datafield[@tag="520"]')->string_value;
 	# these might be repeatable
-	$record{doi}        = join(";",map(arwagner::trim($_->string_value), 
+	$record{doi}        = join(";",map(HGF::Forms::trim($_->string_value), 
 					$xp->find('/collection/record/datafield[@tag="024"]/subfield[@code="a"]')->get_nodelist
 				       )
 				   );
-	$record{repno}      = join(";",map(arwagner::trim($_->string_value), 
+	$record{repno}      = join(";",map(HGF::Forms::trim($_->string_value), 
 					$xp->find('/collection/record/datafield[@tag="037"]/subfield[@code="a"]')->get_nodelist
 				       )
 				   );
@@ -118,7 +118,7 @@ sub Fetch ($) {
 	$record{comments}   = $xp->findvalue('/collection/record/datafield[@tag="500"]/subfield[@code="a"]')->string_value;
 	$record{"AU"}	    = join(";",
 			            ( 
-			    	    map(arwagner::trim(&AUString($_)), 
+			    	    map(HGF::Forms::trim(&AUString($_)), 
 				        ($xp->find('/collection/record/datafield[@tag="100"]/subfield[@code="a"]/..')->get_nodelist,
 					 $xp->find('/collection/record/datafield[@tag="700"]/subfield[@code="a"]/..')->get_nodelist)
 				       )
@@ -132,8 +132,8 @@ sub Fetch ($) {
 	$record{abstract} =~ s/\n/ /g;
 	$record{title}    =~ s/\s{1,}/ /g;
 	$record{abstract} =~ s/\s{1,}/ /g;
-	$record{title}    = arwagner::trim($record{title});
-	$record{abstract} = arwagner::trim($record{abstract});
+	$record{title}    = HGF::Forms::trim($record{title});
+	$record{abstract} = HGF::Forms::trim($record{abstract});
 	foreach my $key (keys(%record)) { # Clean up
 		delete $record{$key} unless ($record{$key});
 	};

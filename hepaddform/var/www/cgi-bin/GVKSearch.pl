@@ -43,7 +43,7 @@ use IO::Handle;
 use LWP::UserAgent;
 use Sys::Hostname;
 
-use arwagner::GVK;
+use HGF::Forms::GVK;
 
 use CGI;
 ### use CGI qw/ -oldstyle_urls/;

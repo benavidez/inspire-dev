@@ -41,7 +41,7 @@ use IO::Handle;
 use locale;
 use Encode;
 
-use arwagner::arwagner;
+use HGF::Forms::HGF;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 

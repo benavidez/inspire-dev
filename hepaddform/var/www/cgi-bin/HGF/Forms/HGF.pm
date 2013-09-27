@@ -1,7 +1,7 @@
-package arwagner;
+package HGF::Forms;
 #=========================================================================
 #
-#    arwagner.pm
+#    HGF::Forms.pm
 #
 #    Some tools
 #

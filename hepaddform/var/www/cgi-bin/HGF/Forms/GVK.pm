@@ -44,8 +44,8 @@ use PICA::SRUSearchParser;
 use Encode;
 use IO::Handle;
 
-use arwagner::arwagner;
-use arwagner::CGIHelper;
+use HGF::Forms::HGF;
+use HGF::Forms::CGIHelper;
 
 *STDOUT->autoflush(1);    # Unbuffered screen IO
 

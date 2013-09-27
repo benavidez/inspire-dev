@@ -34,12 +34,12 @@
 use Encode;
 use IO::Handle;
 use LWP::UserAgent;
-use arwagner::MarcXML;
-use arwagner::crossref;
+use HGF::Forms::MarcXML;
+use HGF::Forms::crossref;
 use File::Path;
 
 # Content enrichment
-use arwagner::enrich;
+use HGF::Forms::enrich;
 
 use Storable qw(store retrieve freeze thaw dclone);
 *STDOUT->autoflush(1);    # Unbuffered screen IO
