@@ -6,7 +6,6 @@ try:
 except ImportError: 
     import simplejson as json
 from invenio import bibcatalog_system_rt
-
 #global curdir
 #curdir = '/opt/invenio/var/data/submit/storage/running/journal/1360004080_1102'
 
@@ -99,7 +98,7 @@ def get_authors(fieldname, mylist, inst):
             inst_str = '\n'
         ret = ret + fieldname + ' $$a' + rec["a"] + '$$u' + inst_str
 
-    return ret
+    return ret.encode('utf-8')
 
 # -------------------------- PUBLIC FUNCTION -----------------------------------
 def Send_hgf_RT_Ticket(parameters, curdir, form, user_info=None):
@@ -151,15 +150,16 @@ def Send_hgf_RT_Ticket(parameters, curdir, form, user_info=None):
                 ret = ret + fieldname + ' $$' + subfield + mylist + '\n'
 
     ret = ret + str773 + '\n'
-
+    ret = str(ret.replace('%', '%%'))
     #print ret
+
     ticketer = bibcatalog_system_rt.BibCatalogSystemRT()
     ticket_id = ticketer.ticket_submit(subject =
             'HEP Addition Submit', requestor = 'eduardob', text = 'Content: ',
             queue = 'Test', owner = '')
 
     #if ticketer.ticket_comment(None, ticket_id, ret) == None:
-    ticketer.ticket_comment(None, ticket_id, str(ret))
+    ticketer.ticket_comment(None, ticket_id, ret)
     #print 'commentiong on ticket failed'
     #write_message("Error: commenting on ticket %s failed." % (str(ticket_id),))
 
