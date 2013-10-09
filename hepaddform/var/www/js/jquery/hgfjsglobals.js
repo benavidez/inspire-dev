@@ -9,6 +9,7 @@ function build_tooltip() {
         tt['773__p'] = 'If the article appeared in a journal, enter the standard abbreviation for journal name used in citations, or the journal coden.'; //journal
         tt['773__v'] = 'If the article was published in a journal, enter the volume number or name here'; //volume
         tt['773__c'] = 'Please provide the page range for the article. If a journal uses article IDs instead of page numbers, enter that instead.'; //page range
+        tt['088__a'] = 'Report Number - lab assigned report identifier'; //Report Number
         tt['989__a'] = 'Please select the paper types that apply to this submission.'; //Doc-type
         tt['300__a'] = 'If the article appears in full in a publication, enter the total number of pages on which this article appears. If the article does not appear in print, a count of PDF pages is acceptable.'; //number of pages
         tt['111__g'] = 'If the article is part of a conference proceedings, enter the INSPIRE conference number. You can search for these in the “Conferences” section of <a href="#">test</a>'; //conference number

@@ -6,9 +6,9 @@ try:
 except ImportError: 
     import simplejson as json
 from invenio import bibcatalog_system_rt
+from invenio.textutils import wash_for_utf8
 #global curdir
 #curdir = '/opt/invenio/var/data/submit/storage/running/journal/1360004080_1102'
-
 ############## Functions ###################################
 def read_file(fieldname):
     """read a text-file (marcdata) and return text"""
@@ -160,8 +160,7 @@ def Send_hgf_RT_Ticket(parameters, curdir, form, user_info=None):
 
     #if ticketer.ticket_comment(None, ticket_id, ret) == None:
     ticketer.ticket_comment(None, ticket_id, ret)
-    #print 'commentiong on ticket failed'
-    #write_message("Error: commenting on ticket %s failed." % (str(ticket_id),))
+    return "<b>Your submission completed successfully! </b><br /><b>Use this RT ticket number for your reference: %s</b><br />" % (str(ticket_id))
 
     #if __name__ == "__main__":
     #Send_RT_Ticket()

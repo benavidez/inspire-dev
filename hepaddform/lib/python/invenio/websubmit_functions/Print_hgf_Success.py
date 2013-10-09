@@ -38,4 +38,4 @@ def Print_hgf_Success(parameters, curdir, form, user_info=None):
        * newrnin: Name of the file containing the 2nd reference of the
                   document (if any)
     """
-    return "<b>Submission Complete!</b><br /><br />Thank you!"
+    return "<br />Thank you!"
