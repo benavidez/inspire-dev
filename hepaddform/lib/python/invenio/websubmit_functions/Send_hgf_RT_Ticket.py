@@ -160,7 +160,11 @@ def Send_hgf_RT_Ticket(parameters, curdir, form, user_info=None):
 
     #if ticketer.ticket_comment(None, ticket_id, ret) == None:
     ticketer.ticket_comment(None, ticket_id, ret)
-    return "<b>Your submission completed successfully! </b><br /><b>Use this RT ticket number for your reference: %s</b><br />" % (str(ticket_id))
+
+    confirm_text = "<b>Your submission completed successfully! </b><br /><br />"
+    confirm_text = confirm_text + "If you have questions about this submission, please send e-mail to help@inspirehep.net with a subject line of: [INSPIRE-HEP] #%s<br />" % (str(ticket_id))
+
+    return confirm_text
 
     #if __name__ == "__main__":
     #Send_RT_Ticket()
