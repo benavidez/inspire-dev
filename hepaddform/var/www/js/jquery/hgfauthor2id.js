@@ -502,7 +502,7 @@ function autocomplete_kb(that, kb_name){
         return false;
     });
 	
-			s
+
 });
 
 //

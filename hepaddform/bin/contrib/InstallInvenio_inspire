@@ -11,8 +11,8 @@
 ### CERN should configure the following variables!!!!
 export admin=admin
 export instance=inspire
-export gitdir=/home/eduardo/src
-export inveniopath=/opt/invenio
+export gitdir=/u1/src  #/home/eduardo/src
+export inveniopath=/u1/invenio #/opt/invenio
 export wwwusr=apache
 
 
@@ -128,7 +128,7 @@ echo "=================================================="
 
 
 
-suInstallJqueryPlugins   #--- Step3: install jquery plugins (optional)
+#suInstallJqueryPlugins   #--- Step3: install jquery plugins (optional)
 
 hgfconfigure             #--- Step4: copy all files from hgf-invenio into invenio-installation (no core invenio files are overwritten)
 
@@ -139,4 +139,4 @@ SetOutputFormatDefs      #--- Step6: add new output formats
 CreateSubmitMasks        #--- Step8: Create submission forms 
                          #CreateCollections   #--- Step9: Create collections to be known to the system
 
-install_perl_modules
+#install_perl_modules

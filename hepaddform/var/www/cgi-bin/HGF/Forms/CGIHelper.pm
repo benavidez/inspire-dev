@@ -661,6 +661,7 @@ sub ConstructRecord($%%%%%%%%) {
 	for my $k (sort keys(%cxrec)) {
 			next if $k eq "SRC";
 			$record{$k} = $cxrec{$k};
+            # print "ED->$k\t $record{$k}\n";
 	}
 	$SRC .= $cxrec{SRC} . ", " if (defined($cxrec{SRC}));
 
@@ -709,9 +710,12 @@ sub ConstructRecord($%%%%%%%%) {
 		$record{$k} = $rec{$k};
 	}
 	$SRC .= $rec{SRC} . ", " if (defined($rec{SRC}));
-
-
-	return(%record)
+   
+    #for my $k (keys (%record)) {
+    #    print "ED->$k\t $record{$k}\n";
+    #}
+    
+    return(%record)
 }
 
 #----------------------------------------------------------------------
@@ -757,6 +761,8 @@ sub MakeOutput($$%) {
  			 $marcdta{"a"} = $record{bookdoi};
  			 $marcdta{"2"} = "doi";
  			 push (@MRFields, { %marcdta });
+             $record{doi} = $record{bookdoi};
+             $record{title} = $record{booktitle};
  		 }
  		 $bookmaster .= CGIHelper::DtaR2Output("024", "7", " ", @MRFields);
  
